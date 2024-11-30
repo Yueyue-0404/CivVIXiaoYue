@@ -29,6 +29,10 @@
   "BotData_ArtificialWonders.sql",
   "BotData_NatureWonders.sql",
   "BotData_Feature_ValidTerrains.sql",
+  "BotData_Technologies.sql",
+  "BotData_Technology_Unlocks.sql",
+  "BotData_TechnologyPrereqs.sql",
+  "BotData_TechnologyQuotes.sql",
 
   "BotData_Alias_ArtificialWonders.sql",
   "BotData_Alias_Buildings.sql",

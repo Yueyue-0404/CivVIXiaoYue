@@ -6,6 +6,11 @@ import yaml
 command_dict = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {  # 日志格式
+        'standard': {
+            'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
+        },
+    },
     'handlers': {
         'console': {
             'class': 'logging.StreamHandler',
@@ -23,7 +28,7 @@ command_dict = {
         '': {  # root logger
             'handlers': ['console', 'file'],
             'level': 'DEBUG',
-            'propagate': True,
+            'propagate': False,
         },
     },
 }

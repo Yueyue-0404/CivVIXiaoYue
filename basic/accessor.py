@@ -1,37 +1,25 @@
 import re
 import sqlite3
+from typing import List, Dict
 
 import json
 import yaml
 
+from .model import CivDataDict
+from .settings import *
+
 #  todo 该代码仅限调试时用，正式上线时只保留 上半 的内容
 
-if __name__ != '__main__':
-    from .model import CivDataDict
-    from .settings import *
-
-    with open(CONFIG_DIR.joinpath("table.yaml")) as file:
-        table_dict = yaml.safe_load(file)
-    with open(CONFIG_DIR.joinpath("unitdata.json"), mode="r") as file:
-        unit_info_dict = json.load(file)
-    with open(CONFIG_DIR.joinpath("improvementdata.json"), mode="r") as file:
-        improvement_info_dict = json.load(file)
-    with open(CONFIG_DIR.joinpath("districtdata.json"), mode="r") as file:
-        district_info_dict = json.load(file)
-    with open(CONFIG_DIR.joinpath("buildingdata.json"), mode="r") as file:
-        building_info_dict = json.load(file)
-else:
-    from settings import *
-    from model import CivDataDict
-
-    CIVVI6DB_DIR = Path("/home/tarena/Yueyue/PyCharmProject/Own/qqbot/CivVIXiaoYue/data/civ6db")
-    CONFIG_DIR = Path("/home/tarena/Yueyue/PyCharmProject/Own/qqbot/CivVIXiaoYue/config")
-    with open(CONFIG_DIR.joinpath("table.yaml"), mode="r") as file:
-        table_dict = yaml.safe_load(file)
-    with open(CONFIG_DIR.joinpath("unitdata.json"), mode="r") as file:
-        unit_info_dict = json.load(file)
-    with open(CONFIG_DIR.joinpath("improvementdata.json"), mode="r") as file:
-        improvement_info_dict = json.load(file)
+with open(CONFIG_DIR.joinpath("table.yaml")) as file:
+    table_dict = yaml.safe_load(file)
+with open(CONFIG_DIR.joinpath("unitdata.json"), mode="r") as file:
+    unit_info_dict = json.load(file)
+with open(CONFIG_DIR.joinpath("improvementdata.json"), mode="r") as file:
+    improvement_info_dict = json.load(file)
+with open(CONFIG_DIR.joinpath("districtdata.json"), mode="r") as file:
+    district_info_dict = json.load(file)
+with open(CONFIG_DIR.joinpath("buildingdata.json"), mode="r") as file:
+    building_info_dict = json.load(file)
 
 
 class DataAccesser:
@@ -65,7 +53,7 @@ class DataAccesser:
         self.simplizedDB.close()
 
     @staticmethod
-    def doSelectAndGetResult(db: sqlite3.Connection, sql: str, params=()) -> list[dict]:
+    def doSelectAndGetResult(db: sqlite3.Connection, sql: str, params=()) -> List[Dict]:
         new_cursor = db.cursor()
         try:
             new_cursor.execute(sql, params)
@@ -749,14 +737,3 @@ class DataAccesser:
         )
         category = result[0].get("Type")
         return category
-
-
-
-#  todo 以下代码仅限调试时用，正式上线时删除
-if __name__ == "__main__":
-    new_accesser = DataAccesser()
-    test_sql = "select * from zh_Hans_Text limit 10"
-    r = new_accesser.doSelectAndGetResult(new_accesser.locDB, test_sql)
-    print("=" * 35)
-    for i in r:
-        print(i)
