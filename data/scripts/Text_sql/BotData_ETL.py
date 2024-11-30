@@ -3,6 +3,7 @@ import sqlite3
 from pathlib import Path
 
 import SQL_function_register as register
+from new_print import *
 
 with open(Path.cwd().joinpath("BotData_ETL.json"), mode="r",encoding="utf8") as f:
     scripts = json.load(f)
@@ -27,7 +28,11 @@ try:
     print("ETL START!!!")
     for i in scripts:
         #  往GamePlay中灌数
-        with open(Path.cwd().joinpath("BotData").joinpath(i), mode="r",encoding="utf8") as etl_script:
+        sql_script_path = Path.cwd().joinpath("BotData").joinpath(i)
+        if not sql_script_path.exists():
+            new_print("{}不存在！！！".format(sql_script_path),color=RED)
+            break
+        with open(sql_script_path, mode="r",encoding="utf8") as etl_script:
             GP_new_cursor.executescript(etl_script.read())
         GameplayDB.commit()
         #  取DDL

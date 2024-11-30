@@ -1,7 +1,4 @@
-import json
-from pathlib import Path
-
-data = {
+{
     "basic_info": {
         "Prereq": "{} 解锁",
         "Cost": "基础花费{}锤",
@@ -10,14 +7,14 @@ data = {
         "Entertainment": "提供{}宜居度",
         "PurchaseYield": "可以用{}直接购买",
         "Maintenance": "维护费{}金/回合",
+        "CitizenSlots": "提供{}专家槽位"
     },
     "special_info": {
         "OuterDefenseHitPoints": "+{} 城墙护甲",
         "OuterDefenseStrength": "该建筑能令城市的防御力提高{}点",
         "EnabledByReligion": "必须有对应的宗教教条才能建造",
-        "CitizenSlots": "提供{}专家槽位",
         "UnlocksGovernmentPolicy": "建成后能解锁一张对应政体级别的传承紫卡",
-        "GovernmentTierRequirement": "必须拥有{}政体才能解锁",
+        "GovernmentTierRequirement": "必须拥有{}政体才能解锁"
     },
     "no_use": {
         "MaxPlayerInstances": "玩家只能拥有一个，只有宫殿有这个字段，没啥用",
@@ -46,14 +43,5 @@ data = {
         "AdjacentCapital": "必须靠首都，阿帕专属",
         "AdjacentImprovement": "必须靠某种改良",
         "CityAdjacentTerrain": ""
-    },
+    }
 }
-
-
-
-def write_into_json(json_path: Path, data: dict or list):
-    with open(json_path, mode="w", encoding="utf8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=4)
-
-
-write_into_json(Path.cwd().joinpath("buildingdata.json"), data)

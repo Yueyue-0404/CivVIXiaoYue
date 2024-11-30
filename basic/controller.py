@@ -157,7 +157,7 @@ class Controller:
                 # 这是ud指令
             elif command_index == command_dict["/ub"]:
                 content += "这是ub指令，应该查询国家或领袖{}\n".format(keyword)
-                content += "结果为：{}".format(self.accesser.selectUU(keyword))
+                content += "结果为：{}".format(self.accesser.selectUB(keyword, command_index))
                 # 这是ub指令
             elif command_index == command_dict["/ui"]:
                 content += "这是ui指令，应该查询国家或领袖{}\n".format(keyword)
@@ -165,7 +165,7 @@ class Controller:
                 # 这是ui指令
             elif command_index == command_dict["/ability"]:
                 content += "这是ability指令，应该查询国家或领袖{}\n".format(keyword)
-                content += "结果为：{}".format(self.accesser.selectUU(keyword))
+                content += "结果为：{}".format(self.accesser.selectAB(keyword, command_index))
                 # 这是ab指令
             elif command_index == command_dict["/bug"]:
                 content += "这是bug指令{}".format(keyword)

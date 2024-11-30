@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
-import os
 
 import botpy
 from botpy import logging
 from botpy.ext.cog_yaml import read
 from botpy.manage import GroupManageEvent
-from botpy.message import GroupMessage, Message
-from .settings import *
+from botpy.message import GroupMessage
+
 from .controller import Controller
-from . import accessor
+from .settings import *
 
 test_config = read(CONFIG_DIR.joinpath("config.yaml"))
 _log = logging.get_logger()
@@ -26,7 +25,7 @@ class CivVIBot(botpy.Client):
             group_openid=event.group_openid,
             msg_type=0,
             event_id=event.event_id,
-            content="你好，我是小钥。\n小钥能够为您便捷快速地查询文明6原版数据，快来@我试试吧！",
+            content="你好，我是Civ‌Ⅵ小钥。\n小钥能够为您便捷快速地查询文明6原版数据，快来@我试试吧！",
         )
 
     async def on_group_at_message_create(self, message: GroupMessage):
