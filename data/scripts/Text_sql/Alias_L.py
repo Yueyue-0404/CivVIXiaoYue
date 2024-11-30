@@ -48,7 +48,5 @@ def write_into_json(json_path: Path, data: dict or list):
         json.dump(data, f, ensure_ascii=False, indent=4,)
 
 json_dir = Path("../..").resolve()
-print("请确认路径，json将存储在该目录下：")
-input(json_dir)
 write_into_json(json_dir.joinpath("alias_dict.json"),alias_dict)
 write_into_json(json_dir.joinpath("alias_pinyin_dict.json"),alias_pinyin_dict)

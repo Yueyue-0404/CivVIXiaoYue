@@ -110,6 +110,7 @@ def loadIntpSimplizedDB():
             new_cursor.close()
     else:
         raise FileNotFoundError
+    Path("./zh_Hans_Text.sql").unlink()
 
 
 operate(TEXT_DIR)

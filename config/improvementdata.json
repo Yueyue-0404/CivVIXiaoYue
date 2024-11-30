@@ -3,7 +3,7 @@
     "Prereq": "{} 解锁",
     "PlunderType": "掠夺{}",
     "Housing1": "提供{}住房",
-    "Appeal": "会导致周围一圈的地格魅力{}",
+    "Appeal": "令周围的陆地单元格魅力{}",
     "Domain": "应建造在{}地格上"
   },
   "special_info": {

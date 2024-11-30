@@ -216,4 +216,5 @@ INSERT INTO BotData_Alias_Civilizations (Tag,Truename,Alia,"Type") VALUES
 INSERT INTO BotData_Alias_Civilizations (Tag,Truename,Alia,"Type") VALUES
 	 ('LOC_CIVILIZATION_BYZANTIUM_NAME','美国','美利坚','文明'),
 	 ('LOC_CIVILIZATION_BYZANTIUM_NAME','美国','美帝','文明'),
+	 ('LOC_CIVILIZATION_BYZANTIUM_NAME','朝鲜','韩国','文明'),
 	 ('LOC_CIVILIZATION_BYZANTIUM_NAME','印度','巴拉特','文明');

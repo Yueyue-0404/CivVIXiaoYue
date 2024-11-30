@@ -111,9 +111,9 @@ class Controller:
         else:
             keywords_selected = self.checkInNameTable(keyword, command_index)
             if keywords_selected != keyword:
-                res,keyword,content_plus = self.ifIsAlia(keyword,keywords_selected)
+                res, keyword,content_plus = self.ifIsAlia(keyword,keywords_selected)
             else:
-                res,content_plus = 1, ""
+                res, content_plus = 1, ""
             if res == 2:
                 content += content_plus
                 return content
@@ -153,7 +153,7 @@ class Controller:
                 # 这是uu指令
             elif command_index == command_dict["/ud"]:
                 content += "这是ud指令，应该查询国家或领袖{}\n".format(keyword)
-                content += "结果为：{}".format(self.accesser.selectUU(keyword))
+                content += "结果为：{}".format(self.accesser.selectUD(keyword, command_index))
                 # 这是ud指令
             elif command_index == command_dict["/ub"]:
                 content += "这是ub指令，应该查询国家或领袖{}\n".format(keyword)
