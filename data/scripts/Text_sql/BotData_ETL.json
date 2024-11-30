@@ -3,6 +3,8 @@
   "BotData_Units.sql",
   "BotData_Unique_Improvements.sql",
   "BotData_Improvements.sql",
+  "BotData_Improvement_YieldChanges.sql",
+  "BotData_Improvement_BonusYieldChanges.sql",
 
   "BotData_Alias_Civilizations.sql",
   "BotData_Alias_Leaders.sql",
