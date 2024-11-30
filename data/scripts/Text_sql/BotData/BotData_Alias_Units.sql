@@ -1,0 +1,268 @@
+drop table if exists BotData_Alias_Units;
+CREATE TABLE BotData_Alias_Units (
+	Tag TEXT,
+	"Truename" TEXT,
+	"Alia" TEXT,
+	"Type" TEXT
+);
+INSERT INTO BotData_Alias_Units (Tag,Truename,Alia,"Type") VALUES
+	 ('LOC_UNIT_SETTLER_NAME','开拓者','开拓者','单位'),
+	 ('LOC_UNIT_BUILDER_NAME','建造者','建造者','单位'),
+	 ('LOC_UNIT_TRADER_NAME','商人','商人','单位'),
+	 ('LOC_UNIT_MISSIONARY_NAME','传教士','传教士','单位'),
+	 ('LOC_UNIT_APOSTLE_NAME','使徒','使徒','单位'),
+	 ('LOC_UNIT_INQUISITOR_NAME','审判官','审判官','单位'),
+	 ('LOC_UNIT_GURU_NAME','上师','上师','单位'),
+	 ('LOC_UNIT_WARRIOR_MONK_NAME','武僧','武僧','单位'),
+	 ('LOC_UNIT_ARCHAEOLOGIST_NAME','考古学家','考古学家','单位'),
+	 ('LOC_UNIT_GREAT_GENERAL_NAME','大将军','大将军','单位');
+INSERT INTO BotData_Alias_Units (Tag,Truename,Alia,"Type") VALUES
+	 ('LOC_UNIT_GREAT_ADMIRAL_NAME','海军统帅','海军统帅','单位'),
+	 ('LOC_UNIT_GREAT_ENGINEER_NAME','大工程师','大工程师','单位'),
+	 ('LOC_UNIT_GREAT_MERCHANT_NAME','大商人','大商人','单位'),
+	 ('LOC_UNIT_GREAT_PROPHET_NAME','大预言家','大预言家','单位'),
+	 ('LOC_UNIT_GREAT_SCIENTIST_NAME','大科学家','大科学家','单位'),
+	 ('LOC_UNIT_GREAT_WRITER_NAME','大作家','大作家','单位'),
+	 ('LOC_UNIT_GREAT_ARTIST_NAME','大艺术家','大艺术家','单位'),
+	 ('LOC_UNIT_GREAT_MUSICIAN_NAME','大音乐家','大音乐家','单位'),
+	 ('LOC_UNIT_SPY_NAME','间谍','间谍','单位'),
+	 ('LOC_UNIT_NATURALIST_NAME','自然学家','自然学家','单位');
+INSERT INTO BotData_Alias_Units (Tag,Truename,Alia,"Type") VALUES
+	 ('LOC_UNIT_SCOUT_NAME','侦察兵','侦察兵','单位'),
+	 ('LOC_UNIT_WARRIOR_NAME','勇士','勇士','单位'),
+	 ('LOC_UNIT_SLINGER_NAME','投石兵','投石兵','单位'),
+	 ('LOC_UNIT_BARBARIAN_HORSEMAN_NAME','蛮族骑手','蛮族骑手','单位'),
+	 ('LOC_UNIT_BARBARIAN_HORSE_ARCHER_NAME','蛮族弓骑手','蛮族弓骑手','单位'),
+	 ('LOC_UNIT_SUMERIAN_WAR_CART_NAME','战车','战车','单位'),
+	 ('LOC_UNIT_GALLEY_NAME','桨帆船','桨帆船','单位'),
+	 ('LOC_UNIT_NORWEGIAN_LONGSHIP_NAME','维京长船','维京长船','单位'),
+	 ('LOC_UNIT_ARCHER_NAME','弓箭手','弓箭手','单位'),
+	 ('LOC_UNIT_SPEARMAN_NAME','枪兵','枪兵','单位');
+INSERT INTO BotData_Alias_Units (Tag,Truename,Alia,"Type") VALUES
+	 ('LOC_UNIT_HEAVY_CHARIOT_NAME','重型战车','重型战车','单位'),
+	 ('LOC_UNIT_BATTERING_RAM_NAME','破城槌','破城槌','单位'),
+	 ('LOC_UNIT_GREEK_HOPLITE_NAME','重装步兵','重装步兵','单位'),
+	 ('LOC_UNIT_SWORDSMAN_NAME','剑客','剑客','单位'),
+	 ('LOC_UNIT_HORSEMAN_NAME','骑手','骑手','单位'),
+	 ('LOC_UNIT_SCYTHIAN_HORSE_ARCHER_NAME','萨卡弓骑手','萨卡弓骑手','单位'),
+	 ('LOC_UNIT_ROMAN_LEGION_NAME','罗马军团','罗马军团','单位'),
+	 ('LOC_UNIT_KONGO_SHIELD_BEARER_NAME','奥姆本巴','奥姆本巴','单位'),
+	 ('LOC_UNIT_CATAPULT_NAME','石弩','石弩','单位'),
+	 ('LOC_UNIT_SIEGE_TOWER_NAME','攻城塔','攻城塔','单位');
+INSERT INTO BotData_Alias_Units (Tag,Truename,Alia,"Type") VALUES
+	 ('LOC_UNIT_QUADRIREME_NAME','四段帆船','四段帆船','单位'),
+	 ('LOC_UNIT_EGYPTIAN_CHARIOT_ARCHER_NAME','世袭贵族战车射手','世袭贵族战车射手','单位'),
+	 ('LOC_UNIT_JAPANESE_SAMURAI_NAME','武士','武士','单位'),
+	 ('LOC_UNIT_NORWEGIAN_BERSERKER_NAME','狂暴武士','狂暴武士','单位'),
+	 ('LOC_UNIT_KNIGHT_NAME','骑士','骑士','单位'),
+	 ('LOC_UNIT_INDIAN_VARU_NAME','战象','战象','单位'),
+	 ('LOC_UNIT_ARABIAN_MAMLUK_NAME','奴隶兵','奴隶兵','单位'),
+	 ('LOC_UNIT_CROSSBOWMAN_NAME','弩手','弩手','单位'),
+	 ('LOC_UNIT_CHINESE_CROUCHING_TIGER_NAME','虎蹲炮','虎蹲炮','单位'),
+	 ('LOC_UNIT_MILITARY_ENGINEER_NAME','军事工程师','军事工程师','单位');
+INSERT INTO BotData_Alias_Units (Tag,Truename,Alia,"Type") VALUES
+	 ('LOC_UNIT_PIKEMAN_NAME','长矛兵','长矛兵','单位'),
+	 ('LOC_UNIT_MUSKETMAN_NAME','火枪手','火枪手','单位'),
+	 ('LOC_UNIT_SPANISH_CONQUISTADOR_NAME','征服者','征服者','单位'),
+	 ('LOC_UNIT_CARAVEL_NAME','轻快帆船','轻快帆船','单位'),
+	 ('LOC_UNIT_BOMBARD_NAME','射石炮','射石炮','单位'),
+	 ('LOC_UNIT_FRIGATE_NAME','护卫舰','护卫舰','单位'),
+	 ('LOC_UNIT_PRIVATEER_NAME','私掠船','私掠船','单位'),
+	 ('LOC_UNIT_ENGLISH_SEADOG_NAME','海猎犬','海猎犬','单位'),
+	 ('LOC_UNIT_FIELD_CANNON_NAME','野战加农炮','野战加农炮','单位'),
+	 ('LOC_UNIT_CAVALRY_NAME','骑兵','骑兵','单位');
+INSERT INTO BotData_Alias_Units (Tag,Truename,Alia,"Type") VALUES
+	 ('LOC_UNIT_RUSSIAN_COSSACK_NAME','哥萨克骑兵','哥萨克骑兵','单位'),
+	 ('LOC_UNIT_ENGLISH_REDCOAT_NAME','红衫军','红衫军','单位'),
+	 ('LOC_UNIT_FRENCH_GARDE_IMPERIALE_NAME','帝国卫队','帝国卫队','单位'),
+	 ('LOC_UNIT_MEDIC_NAME','医疗兵','医疗兵','单位'),
+	 ('LOC_UNIT_IRONCLAD_NAME','装甲舰','装甲舰','单位'),
+	 ('LOC_UNIT_RANGER_NAME','游骑兵','游骑兵','单位'),
+	 ('LOC_UNIT_OBSERVATION_BALLOON_NAME','观测气球','观测气球','单位'),
+	 ('LOC_UNIT_BIPLANE_NAME','双翼机','双翼机','单位'),
+	 ('LOC_UNIT_INFANTRY_NAME','步兵','步兵','单位'),
+	 ('LOC_UNIT_ARTILLERY_NAME','大炮','大炮','单位');
+INSERT INTO BotData_Alias_Units (Tag,Truename,Alia,"Type") VALUES
+	 ('LOC_UNIT_BATTLESHIP_NAME','战舰','战舰','单位'),
+	 ('LOC_UNIT_BRAZILIAN_MINAS_GERAES_NAME','米纳斯吉拉斯','米纳斯吉拉斯','单位'),
+	 ('LOC_UNIT_SUBMARINE_NAME','潜艇','潜艇','单位'),
+	 ('LOC_UNIT_GERMAN_UBOAT_NAME','U型潜水艇','U型潜水艇','单位'),
+	 ('LOC_UNIT_AT_CREW_NAME','反坦克组','反坦克组','单位'),
+	 ('LOC_UNIT_TANK_NAME','坦克','坦克','单位'),
+	 ('LOC_UNIT_FIGHTER_NAME','战斗机','战斗机','单位'),
+	 ('LOC_UNIT_AMERICAN_P51_NAME','P-51战斗机','P-51战斗机','单位'),
+	 ('LOC_UNIT_BOMBER_NAME','轰炸机','轰炸机','单位'),
+	 ('LOC_UNIT_ANTIAIR_GUN_NAME','防空炮','防空炮','单位');
+INSERT INTO BotData_Alias_Units (Tag,Truename,Alia,"Type") VALUES
+	 ('LOC_UNIT_MACHINE_GUN_NAME','机关枪队','机关枪队','单位'),
+	 ('LOC_UNIT_AIRCRAFT_CARRIER_NAME','航空母舰','航空母舰','单位'),
+	 ('LOC_UNIT_DESTROYER_NAME','驱逐舰','驱逐舰','单位'),
+	 ('LOC_UNIT_HELICOPTER_NAME','直升飞机','直升飞机','单位'),
+	 ('LOC_UNIT_NUCLEAR_SUBMARINE_NAME','核潜艇','核潜艇','单位'),
+	 ('LOC_UNIT_MECHANIZED_INFANTRY_NAME','机械化步兵','机械化步兵','单位'),
+	 ('LOC_UNIT_ROCKET_ARTILLERY_NAME','火箭炮','火箭炮','单位'),
+	 ('LOC_UNIT_MOBILE_SAM_NAME','防空导弹车','防空导弹车','单位'),
+	 ('LOC_UNIT_JET_FIGHTER_NAME','喷气式战斗机','喷气式战斗机','单位'),
+	 ('LOC_UNIT_JET_BOMBER_NAME','喷气式轰炸机','喷气式轰炸机','单位');
+INSERT INTO BotData_Alias_Units (Tag,Truename,Alia,"Type") VALUES
+	 ('LOC_UNIT_MISSILE_CRUISER_NAME','导弹巡洋舰','导弹巡洋舰','单位'),
+	 ('LOC_UNIT_MODERN_AT_NAME','现代反坦克组','现代反坦克组','单位'),
+	 ('LOC_UNIT_MODERN_ARMOR_NAME','现代坦克','现代坦克','单位'),
+	 ('LOC_UNIT_MAN_AT_ARMS_NAME','披甲战士','披甲战士','单位'),
+	 ('LOC_UNIT_LINE_INFANTRY_NAME','线列步兵','线列步兵','单位'),
+	 ('LOC_UNIT_TREBUCHET_NAME','投石机','投石机','单位'),
+	 ('LOC_UNIT_AZTEC_EAGLE_WARRIOR_NAME','雄鹰战士','雄鹰战士','单位'),
+	 ('LOC_UNIT_INDONESIAN_JONG_NAME','戎克船','戎克船','单位'),
+	 ('LOC_UNIT_KHMER_DOMREY_NAME','高棉战象','高棉战象','单位'),
+	 ('LOC_UNIT_POLISH_HUSSAR_NAME','翼骑兵','翼骑兵','单位');
+INSERT INTO BotData_Alias_Units (Tag,Truename,Alia,"Type") VALUES
+	 ('LOC_UNIT_NUBIAN_PITATI_NAME','皮塔提弓箭手','皮塔提弓箭手','单位'),
+	 ('LOC_UNIT_MACEDONIAN_HYPASPIST_NAME','持盾护卫','持盾护卫','单位'),
+	 ('LOC_UNIT_MACEDONIAN_HETAIROI_NAME','伙友骑兵','伙友骑兵','单位'),
+	 ('LOC_UNIT_PERSIAN_IMMORTAL_NAME','长生军','长生军','单位'),
+	 ('LOC_UNIT_DIGGER_NAME','矿工军团','矿工军团','单位'),
+	 ('LOC_UNIT_ZULU_IMPI_NAME','班图武士','班图武士','单位'),
+	 ('LOC_UNIT_KOREAN_HWACHA_NAME','火车','火车','单位'),
+	 ('LOC_UNIT_SCOTTISH_HIGHLANDER_NAME','高地军团','高地军团','单位'),
+	 ('LOC_UNIT_DE_ZEVEN_PROVINCIEN_NAME','七省级护卫舰','七省级护卫舰','单位'),
+	 ('LOC_UNIT_MONGOLIAN_KESHIG_NAME','怯薛歹','怯薛歹','单位');
+INSERT INTO BotData_Alias_Units (Tag,Truename,Alia,"Type") VALUES
+	 ('LOC_UNIT_GEORGIAN_KHEVSURETI_NAME','赫雷苏维季战士','赫雷苏维季战士','单位'),
+	 ('LOC_UNIT_MAPUCHE_MALON_RAIDER_NAME','装甲突袭骑兵','装甲突袭骑兵','单位'),
+	 ('LOC_UNIT_CREE_OKIHTCITAW_NAME','奥克奇塔乌','奥克奇塔乌','单位'),
+	 ('LOC_UNIT_SPEC_OPS_NAME','特种部队','特种部队','单位'),
+	 ('LOC_UNIT_DRONE_NAME','无人机','无人机','单位'),
+	 ('LOC_UNIT_PIKE_AND_SHOT_NAME','枪刺与射击方阵','枪刺与射击方阵','单位'),
+	 ('LOC_UNIT_SUPPLY_CONVOY_NAME','补给车队','补给车队','单位'),
+	 ('LOC_UNIT_SKIRMISHER_NAME','散兵','散兵','单位'),
+	 ('LOC_UNIT_COURSER_NAME','追猎者','追猎者','单位'),
+	 ('LOC_UNIT_CUIRASSIER_NAME','胸甲骑兵','胸甲骑兵','单位');
+INSERT INTO BotData_Alias_Units (Tag,Truename,Alia,"Type") VALUES
+	 ('LOC_UNIT_GIANT_DEATH_ROBOT_NAME','末日机甲','末日机甲','单位'),
+	 ('LOC_UNIT_ROCK_BAND_NAME','摇滚乐队','摇滚乐队','单位'),
+	 ('LOC_UNIT_CANADA_MOUNTIE_NAME','皇家骑警','皇家骑警','单位'),
+	 ('LOC_UNIT_HUNGARY_BLACK_ARMY_NAME','黑军','黑军','单位'),
+	 ('LOC_UNIT_HUNGARY_HUSZAR_NAME','骠骑兵','骠骑兵','单位'),
+	 ('LOC_UNIT_INCA_WARAKAQ_NAME','瓦剌卡战士','瓦剌卡战士','单位'),
+	 ('LOC_UNIT_MALI_MANDEKALU_CAVALRY_NAME','曼德卡鲁骑兵','曼德卡鲁骑兵','单位'),
+	 ('LOC_UNIT_MAORI_TOA_NAME','托阿勇士','托阿勇士','单位'),
+	 ('LOC_UNIT_OTTOMAN_BARBARY_CORSAIR_NAME','巴巴里海盗','巴巴里海盗','单位'),
+	 ('LOC_UNIT_PHOENICIA_BIREME_NAME','双层桨座战船','双层桨座战船','单位');
+INSERT INTO BotData_Alias_Units (Tag,Truename,Alia,"Type") VALUES
+	 ('LOC_UNIT_SULEIMAN_JANISSARY_NAME','苏丹亲兵','苏丹亲兵','单位'),
+	 ('LOC_UNIT_SWEDEN_CAROLEAN_NAME','卡洛林步兵','卡洛林步兵','单位'),
+	 ('LOC_UNIT_AMERICAN_ROUGH_RIDER_NAME','莽骑兵','莽骑兵','单位'),
+	 ('LOC_UNIT_MAYAN_HULCHE_NAME','投枪手','投枪手','单位'),
+	 ('LOC_UNIT_LAHORE_NIHANG_NAME','尼杭战士','尼杭战士','单位'),
+	 ('LOC_UNIT_COMANDANTE_GENERAL_NAME','总指挥','总指挥','单位'),
+	 ('LOC_UNIT_COLOMBIAN_LLANERO_NAME','牛仔骑兵','牛仔骑兵','单位'),
+	 ('LOC_UNIT_BYZANTINE_DROMON_NAME','火战船','火战船','单位'),
+	 ('LOC_UNIT_BYZANTINE_TAGMA_NAME','甲胄骑兵','甲胄骑兵','单位'),
+	 ('LOC_UNIT_GAUL_GAESATAE_NAME','高卢枪佣兵','高卢枪佣兵','单位');
+INSERT INTO BotData_Alias_Units (Tag,Truename,Alia,"Type") VALUES
+	 ('LOC_UNIT_VIETNAMESE_VOI_CHIEN_NAME','象兵','象兵','单位'),
+	 ('LOC_UNIT_ETHIOPIAN_OROMO_CAVALRY_NAME','奥罗莫骑兵','奥罗莫骑兵','单位'),
+	 ('LOC_UNIT_BABYLONIAN_SABUM_KIBITTUM_NAME','主力军团','主力军团','单位'),
+	 ('LOC_UNIT_PORTUGUESE_NAU_NAME','克拉克帆船','克拉克帆船','单位'),
+	 ('LOC_UNIT_SETTLER_NAME','开拓者','移民','单位'),
+	 ('LOC_UNIT_SETTLER_NAME','开拓者','旗子','单位'),
+	 ('LOC_UNIT_BUILDER_NAME','建造者','锤子','单位'),
+	 ('LOC_UNIT_BUILDER_NAME','建造者','工人','单位'),
+	 ('LOC_UNIT_GREAT_GENERAL_NAME','大将军','大军','单位'),
+	 ('LOC_UNIT_GREAT_ADMIRAL_NAME','海军统帅','海军司令','单位');
+INSERT INTO BotData_Alias_Units (Tag,Truename,Alia,"Type") VALUES
+	 ('LOC_UNIT_GREAT_ENGINEER_NAME','大工程师','大工','单位'),
+	 ('LOC_UNIT_GREAT_MERCHANT_NAME','大商人','大商','单位'),
+	 ('LOC_UNIT_GREAT_PROPHET_NAME','大预言家','大预','单位'),
+	 ('LOC_UNIT_GREAT_PROPHET_NAME','大预言家','大仙','单位'),
+	 ('LOC_UNIT_GREAT_SCIENTIST_NAME','大科学家','大科','单位'),
+	 ('LOC_UNIT_GREAT_WRITER_NAME','大作家','大作','单位'),
+	 ('LOC_UNIT_GREAT_WRITER_NAME','大作家','大文','单位'),
+	 ('LOC_UNIT_GREAT_ARTIST_NAME','大艺术家','大艺','单位'),
+	 ('LOC_UNIT_GREAT_MUSICIAN_NAME','大音乐家','大音','单位'),
+	 ('LOC_UNIT_SPY_NAME','间谍','特务','单位');
+INSERT INTO BotData_Alias_Units (Tag,Truename,Alia,"Type") VALUES
+	 ('LOC_UNIT_SCOUT_NAME','侦察兵','狗','单位'),
+	 ('LOC_UNIT_WARRIOR_NAME','勇士','棒子','单位'),
+	 ('LOC_UNIT_WARRIOR_NAME','勇士','鸡腿','单位'),
+	 ('LOC_UNIT_SLINGER_NAME','投石兵','投石','单位'),
+	 ('LOC_UNIT_SUMERIAN_WAR_CART_NAME','战车','驴车','单位'),
+	 ('LOC_UNIT_NORWEGIAN_LONGSHIP_NAME','维京长船','挪威船','单位'),
+	 ('LOC_UNIT_ARCHER_NAME','弓箭手','弓箭','单位'),
+	 ('LOC_UNIT_ARCHER_NAME','弓箭手','弓','单位'),
+	 ('LOC_UNIT_ARCHER_NAME','弓箭手','小弓','单位'),
+	 ('LOC_UNIT_SPEARMAN_NAME','枪兵','叉子','单位');
+INSERT INTO BotData_Alias_Units (Tag,Truename,Alia,"Type") VALUES
+	 ('LOC_UNIT_SPEARMAN_NAME','枪兵','叉子兵','单位'),
+	 ('LOC_UNIT_HEAVY_CHARIOT_NAME','重型战车','远古战车','单位'),
+	 ('LOC_UNIT_BATTERING_RAM_NAME','破城槌','攻城槌','单位'),
+	 ('LOC_UNIT_SWORDSMAN_NAME','剑客','铁剑','单位'),
+	 ('LOC_UNIT_HORSEMAN_NAME','骑手','小马','单位'),
+	 ('LOC_UNIT_SCYTHIAN_HORSE_ARCHER_NAME','萨卡弓骑手','弓骑兵','单位'),
+	 ('LOC_UNIT_SCYTHIAN_HORSE_ARCHER_NAME','萨卡弓骑手','弓骑手','单位'),
+	 ('LOC_UNIT_CATAPULT_NAME','石弩','投石车','单位'),
+	 ('LOC_UNIT_EGYPTIAN_CHARIOT_ARCHER_NAME','世袭贵族战车射手','弓战车','单位'),
+	 ('LOC_UNIT_EGYPTIAN_CHARIOT_ARCHER_NAME','世袭贵族战车射手','小飞机','单位');
+INSERT INTO BotData_Alias_Units (Tag,Truename,Alia,"Type") VALUES
+	 ('LOC_UNIT_JAPANESE_SAMURAI_NAME','武士','日本武士','单位'),
+	 ('LOC_UNIT_JAPANESE_SAMURAI_NAME','武士','帝国武士','单位'),
+	 ('LOC_UNIT_NORWEGIAN_BERSERKER_NAME','狂暴武士','维京战士','单位'),
+	 ('LOC_UNIT_KNIGHT_NAME','骑士','马镫','单位'),
+	 ('LOC_UNIT_INDIAN_VARU_NAME','战象','大象','单位'),
+	 ('LOC_UNIT_ARABIAN_MAMLUK_NAME','奴隶兵','马穆鲁克','单位'),
+	 ('LOC_UNIT_MILITARY_ENGINEER_NAME','军事工程师','军工','单位'),
+	 ('LOC_UNIT_MILITARY_ENGINEER_NAME','军事工程师','工兵','单位'),
+	 ('LOC_UNIT_MILITARY_ENGINEER_NAME','军事工程师','工程师','单位'),
+	 ('LOC_UNIT_PIKEMAN_NAME','长矛兵','大矛','单位');
+INSERT INTO BotData_Alias_Units (Tag,Truename,Alia,"Type") VALUES
+	 ('LOC_UNIT_MUSKETMAN_NAME','火枪手','火枪','单位'),
+	 ('LOC_UNIT_CARAVEL_NAME','轻快帆船','大船','单位'),
+	 ('LOC_UNIT_GALLEY_NAME','桨帆船','城防','单位'),
+	 ('LOC_UNIT_PRIVATEER_NAME','私掠船','私掠舰','单位'),
+	 ('LOC_UNIT_FIELD_CANNON_NAME','野战加农炮','野战炮','单位'),
+	 ('LOC_UNIT_FIELD_CANNON_NAME','野战加农炮','小炮','单位'),
+	 ('LOC_UNIT_FIELD_CANNON_NAME','野战加农炮','小钢炮','单位'),
+	 ('LOC_UNIT_CAVALRY_NAME','骑兵','剪刀骑','单位'),
+	 ('LOC_UNIT_RUSSIAN_COSSACK_NAME','哥萨克骑兵','哥萨克','单位'),
+	 ('LOC_UNIT_RANGER_NAME','游骑兵','游侠','单位');
+INSERT INTO BotData_Alias_Units (Tag,Truename,Alia,"Type") VALUES
+	 ('LOC_UNIT_OBSERVATION_BALLOON_NAME','观测气球','气球','单位'),
+	 ('LOC_UNIT_AMERICAN_P51_NAME','P-51战斗机','P51','单位'),
+	 ('LOC_UNIT_AMERICAN_P51_NAME','P-51战斗机','p51','单位'),
+	 ('LOC_UNIT_MACHINE_GUN_NAME','机关枪队','机关枪','单位'),
+	 ('LOC_UNIT_AIRCRAFT_CARRIER_NAME','航空母舰','航母','单位'),
+	 ('LOC_UNIT_HELICOPTER_NAME','直升飞机','直升机','单位'),
+	 ('LOC_UNIT_HELICOPTER_NAME','直升飞机','武直','单位'),
+	 ('LOC_UNIT_MAN_AT_ARMS_NAME','披甲战士','披甲','单位'),
+	 ('LOC_UNIT_LINE_INFANTRY_NAME','线列步兵','线列','单位'),
+	 ('LOC_UNIT_TREBUCHET_NAME','投石机','抛石机','单位');
+INSERT INTO BotData_Alias_Units (Tag,Truename,Alia,"Type") VALUES
+	 ('LOC_UNIT_AZTEC_EAGLE_WARRIOR_NAME','雄鹰战士','雄鹰','单位'),
+	 ('LOC_UNIT_KHMER_DOMREY_NAME','高棉战象','大象','单位'),
+	 ('LOC_UNIT_NUBIAN_PITATI_NAME','皮塔提弓箭手','努比亚弓','单位'),
+	 ('LOC_UNIT_NUBIAN_PITATI_NAME','皮塔提弓箭手','皮弓','单位'),
+	 ('LOC_UNIT_NUBIAN_PITATI_NAME','皮塔提弓箭手','皮皮弓','单位'),
+	 ('LOC_UNIT_MACEDONIAN_HETAIROI_NAME','伙友骑兵','伙伴骑兵','单位'),
+	 ('LOC_UNIT_KOREAN_HWACHA_NAME','火车','火厢车','单位'),
+	 ('LOC_UNIT_KOREAN_HWACHA_NAME','火车','神机箭','单位'),
+	 ('LOC_UNIT_SPEC_OPS_NAME','特种部队','特种兵','单位'),
+	 ('LOC_UNIT_PIKE_AND_SHOT_NAME','枪刺与射击方阵','枪刺','单位');
+INSERT INTO BotData_Alias_Units (Tag,Truename,Alia,"Type") VALUES
+	 ('LOC_UNIT_SUPPLY_CONVOY_NAME','补给车队','补给车','单位'),
+	 ('LOC_UNIT_SUPPLY_CONVOY_NAME','补给车队','卡车','单位'),
+	 ('LOC_UNIT_SUPPLY_CONVOY_NAME','补给车队','后勤车','单位'),
+	 ('LOC_UNIT_COURSER_NAME','追猎者','追猎','单位'),
+	 ('LOC_UNIT_CUIRASSIER_NAME','胸甲骑兵','胸甲','单位'),
+	 ('LOC_UNIT_GIANT_DEATH_ROBOT_NAME','末日机甲','大手办','单位'),
+	 ('LOC_UNIT_GIANT_DEATH_ROBOT_NAME','末日机甲','机甲','单位'),
+	 ('LOC_UNIT_ROCK_BAND_NAME','摇滚乐队','乐队','单位'),
+	 ('LOC_UNIT_MALI_MANDEKALU_CAVALRY_NAME','曼德卡鲁骑兵','曼德卡鲁','单位'),
+	 ('LOC_UNIT_MAORI_TOA_NAME','托阿勇士','托阿','单位');
+INSERT INTO BotData_Alias_Units (Tag,Truename,Alia,"Type") VALUES
+	 ('LOC_UNIT_SULEIMAN_JANISSARY_NAME','苏丹亲兵','亲兵','单位'),
+	 ('LOC_UNIT_SWEDEN_CAROLEAN_NAME','卡洛林步兵','卡洛林','单位'),
+	 ('LOC_UNIT_LAHORE_NIHANG_NAME','尼杭战士','尼杭','单位'),
+	 ('LOC_UNIT_BYZANTINE_DROMON_NAME','火战船','希腊火','单位'),
+	 ('LOC_UNIT_BYZANTINE_TAGMA_NAME','甲胄骑兵','靖绥骑兵','单位'),
+	 ('LOC_UNIT_GAUL_GAESATAE_NAME','高卢枪佣兵','枪佣兵','单位'),
+	 ('LOC_UNIT_VIETNAMESE_VOI_CHIEN_NAME','象兵','大象','单位');
