@@ -51,8 +51,6 @@ class Controller:
         # 如果是普通消息，返回一个100和全部消息内容
         if command[0] != "/":
             return 100, " ".join(content_split_with_space)
-
-        # 如果是指令消息，根据文件内容返回指令编号和消息内容
         if command in command_dict:
             if len(content_split_with_space) > 1:
                 return command_dict[command], " ".join(content_split_with_space[1:])
@@ -112,7 +110,10 @@ class Controller:
             content += "这是帮助"
         else:
             keywords_selected = self.checkInNameTable(keyword, command_index)
-            res,keyword,content_plus = self.ifIsAlia(keyword,keywords_selected)
+            if keywords_selected != keyword:
+                res,keyword,content_plus = self.ifIsAlia(keyword,keywords_selected)
+            else:
+                res,content_plus = 1, ""
             if res == 2:
                 content += content_plus
                 return content
@@ -128,7 +129,10 @@ class Controller:
                 elif res == 1:
                     content += content_plus
                     keywords_selected = self.checkInNameTable(keyword, command_index)
-                    res, keyword, content_plus = self.ifIsAlia(keyword, keywords_selected)
+                    if keywords_selected != keyword:
+                        res, keyword, content_plus = self.ifIsAlia(keyword, keywords_selected)
+                    else:
+                        res, content_plus = 1, ""
                     if res == 2:
                         content += content_plus
                         return content
@@ -157,7 +161,7 @@ class Controller:
                 # 这是ub指令
             elif command_index == command_dict["/ui"]:
                 content += "这是ui指令，应该查询国家或领袖{}\n".format(keyword)
-                content += "结果为：{}".format(self.accesser.selectUU(keyword))
+                content += "结果为：{}".format(self.accesser.selectUI(keyword, command_index))
                 # 这是ui指令
             elif command_index == command_dict["/ability"]:
                 content += "这是ability指令，应该查询国家或领袖{}\n".format(keyword)

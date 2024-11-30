@@ -4,7 +4,7 @@ from pathlib import Path
 
 import SQL_function_register as register
 
-with open(Path.cwd().joinpath("BotData_ETL.json"), mode="r") as f:
+with open(Path.cwd().joinpath("BotData_ETL.json"), mode="r",encoding="utf8") as f:
     scripts = json.load(f)
 GameplayDB = sqlite3.connect(Path("../../civ6db/DebugGameplay.sqlite").resolve())
 SimplizedDB = sqlite3.connect(Path("../../civ6db/SimplizedData.sqlite").resolve())
@@ -18,7 +18,7 @@ print("START!!!")
 try:
     for i in scripts:
         #  往GamePlay中灌数
-        with open(Path.cwd().joinpath(i), mode="r") as etl_script:
+        with open(Path.cwd().joinpath(i), mode="r",encoding="utf8") as etl_script:
             GP_new_cursor.executescript(etl_script.read())
         GameplayDB.commit()
         #  取DDL

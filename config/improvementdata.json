@@ -1,0 +1,50 @@
+{
+  "basic_info": {
+    "Prereq": "{} 解锁",
+    "PlunderType": "掠夺{}",
+    "Housing1": "提供{}住房",
+    "Appeal": "会导致周围一圈的地格魅力{}",
+    "Domain": "应建造在{}地格上"
+  },
+  "special_info": {
+    "RemoveOnEntry": "文明的单位途径后会直接被移除",
+    "Goody": "给移除它的文明提供一份礼物",
+    "SameAdjacentInvalid": "不允许互相相邻",
+    "BuildInLine": "不允许3个之间两两相邻",
+    "CanBuildOutsideTerritory": "可以建造在中立地格",
+    "BuildOnFrontier": "必须建造在国境地格",
+    "AirSlots": "能提供{}个机位",
+    "DefenseModifier": "为所在地格上的单位提供{}点防御力",
+    "GrantFortification": "为所在地格上的单位提供相当于已驻扎{}个回合的防御力",
+    "MinimumAppeal": "必须建造在魅力高于{}的地格上",
+    "Coast": "必须建造在临海地格上",
+    "YieldFromAppeal": "提供相当于所在地格魅力{}",
+    "WeaponSlots": "能发射战略武器",
+    "ReligiousUnitHealRate": "能为宗教单位提供恢复HP的能力",
+    "OnePerCity": "每个城市只能建造一个",
+    "AdjacentSeaResource": "必须建造在水域资源旁边",
+    "RequiresAdjacentBonusOrLuxury": "必须建造在加成或奢侈资源旁边",
+    "RequiresAdjacentLuxury": "必须建造在奢侈资源旁边",
+    "MovementChange": "单位经过时额外损耗{}移动力",
+    "Unworkable": "人口无法在所在地格上工作",
+    "AdjacentToLand": "必须建造在陆地地格旁边",
+    "Unremovable": "不能自行移除",
+    "OnlyOpenBorders": "只能建造在开边文明的国境里",
+    "AllowImpassableMovement": "能穿越不可跨越地格",
+    "BuildOnAdjacentPlot": "指定单位旁边的合法地格建造，而非建造在单位所在地格",
+    "PreventsDrought": "有抗干旱能力",
+    "DisasterResistant": "任何自然灾害都无法摧毁它"
+  },
+  "no_use": {
+    "BarbarianCamp": "是蛮族营地",
+    "DispersalGold": "※ 不知道什么意思，私人金币？",
+    "PlunderAmount": "掠夺的基础值，这个用处不大",
+    "RequiresRiver": "※ 可能是废案，也可能和之前的伐木场有关，反正现在所有数据都是0",
+    "EnforceTerrain": "※ 只有油井和海油井是1，不知道什么意思",
+    "ValidAdjacentTerrainAmount": "这个意思是必须相邻这么多数量的合法地形才能建造，对应的表是Improvement_ValidAdjacentTerrains，这个要单独查表处理",
+    "ImprovementOnRemove": "※ 看不懂一点，移除后的改良设施？？？",
+    "GoodyNotify": "※ 看不懂两点，只有流星坑是0，可能是获取礼物后发不发通知的意思",
+    "NoAdjacentSpecialtyDistrict": "不能建造在专业化区域旁边，都是0，就是都允许建造在专业化区域旁边，不知道啥意义",
+    "Capturable": "能否占领，都是1，没意义"
+  }
+}

@@ -9,9 +9,8 @@ from pathlib import Path
 
 from lxml import etree
 
-TEXT_DIR = Path("./data/text").resolve()
-print(TEXT_DIR)
-DB_Path = Path("./data/civ6db/DebugLocalization.sqlite").resolve()
+TEXT_DIR = Path("../../text").resolve()
+DB_Path = Path("../../civ6db/DebugLocalization.sqlite").resolve()
 DB = sqlite3.connect(DB_Path)
 
 
@@ -35,11 +34,14 @@ def recursionOperation(f):
         print("\nSTART!!!")
         new_cursor = DB.cursor()
         new_cursor.execute("drop table if exists zh_Hans_Text")
-        new_cursor.execute("create table if not exists zh_Hans_Text (Tag TEXT,Text TEXT,Gender TEXT,Plurality TEXT,primary key(Tag,Text))")
+        new_cursor.execute("create table if not exists zh_Hans_Text (id int);")
+        new_cursor.execute("drop table if exists zh_Hans_Text")
+        new_cursor.execute("create table if not exists zh_Hans_Text (Tag TEXT primary key,Text TEXT,Gender TEXT,Plurality TEXT);")
         new_cursor.close()
         for i in file_list:
             if not i.is_dir() and i.suffix == ".xml":
                 f(i)
+        print("FINISHED")
     return wrapper
 
 
@@ -47,7 +49,7 @@ def recursionOperation(f):
 def operate(file: Path):
     new_cursor = DB.cursor()
     try:
-        with open(file, mode="r") as f:
+        with open(file, mode="r",encoding="utf-8") as f:
             print("PARSING {}...".format(str(file).replace(str(TEXT_DIR), "", 1)), end=" ")
             content = f.read()
             try:
@@ -70,33 +72,46 @@ def operate(file: Path):
         new_cursor.close()
 
 
+
 def generateScript():
-    with open(Path("./data/scripts/zh_Hans_Text.sql"), mode="w") as sql:
+    with open(Path("./zh_Hans_Text.sql"), mode="w",encoding="utf-8") as sql:
         sql.write("drop table if exists zh_Hans_Text;\n")
-        sql.write("create table if not exists zh_Hans_Text (Tag TEXT,Text TEXT,Gender TEXT,Plurality TEXT,primary key(Tag,Text));\n")
+        sql.write("create table if not exists zh_Hans_Text (id int);\n")
+        sql.write("drop table if exists zh_Hans_Text;\n")
+        sql.write("create table if not exists zh_Hans_Text (Tag TEXT primary key,Text TEXT,Gender TEXT,Plurality TEXT);\n")
         new_cursor = DB.cursor()
         try:
             new_cursor.execute("select * from zh_Hans_Text")
             res = new_cursor.fetchall()
+            insert_sql = "insert into zh_Hans_Text values "
             for i in res:
-                insert_sql = "insert into zh_Hans_Text values ('{}',{},null,null);\n".format(i[0], i[1].replace("\n", "\\n").join(("'","'")) if i[1] else 'null')
-                sql.write(insert_sql)
+                insert_sql += "('{}',{},null,null),\n".format(i[0], i[1].replace("\n", "\\n").replace("\'", "\'\'").join(("'","'")) if i[1] else 'null')
+            insert_sql = insert_sql[:-2] + ";"
+            sql.write(insert_sql)
         finally:
             new_cursor.close()
 
 def loadIntpSimplizedDB():
-    if Path("./data/scripts/zh_Hans_Text.sql").exists():
-        sql = open(Path("./data/scripts/zh_Hans_Text.sql"), mode="r")
-        new_cursor = sqlite3.connect(Path("./data/civ6db/SimplizedData.sqlite").resolve()).cursor()
+    if Path("./zh_Hans_Text.sql").exists():
+        new_cursor = sqlite3.connect(Path("../../civ6db/SimplizedData.sqlite").resolve()).cursor()
         try:
-            new_cursor.executescript(sql.read())
+            with open(Path("./zh_Hans_Text.sql"), mode="r", encoding="utf-8") as sql_file:
+                sql = sql_file.read()
+                new_cursor.executescript(sql)
         finally:
-            sql.close()
             new_cursor.close()
-            Path("./data/scripts/zh_Hans_Text.sql").unlink()
+
+        new_cursor = sqlite3.connect(Path("../../civ6db/DebugGameplay.sqlite").resolve()).cursor()
+        try:
+            with open(Path("./zh_Hans_Text.sql"), mode="r", encoding="utf-8") as sql_file:
+                sql = sql_file.read()
+                new_cursor.executescript(sql)
+        finally:
+            new_cursor.close()
     else:
         raise FileNotFoundError
 
 
 operate(TEXT_DIR)
 generateScript()
+loadIntpSimplizedDB()

@@ -38,7 +38,7 @@
     "CostProgressionParam1": "训练花销增长步长 {}",
     "InitialLevel": "初始等级 +{}",
     "NumRandomChoices": "晋升树是由 {} 个随机选项中选一个",
-    "PrereqDistrict": "前置区域",
+    "PrereqDistrict": "前置区域 {}",
     "PrereqPopulation": "人口最低需求",
     "CanTrain": "不能自行训练",
     "PurchaseYield": "可通过 {} 直接购买",

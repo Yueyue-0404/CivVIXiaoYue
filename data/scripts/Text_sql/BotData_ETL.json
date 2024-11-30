@@ -1,8 +1,10 @@
 [
   "BotData_Unique_Units.sql",
   "BotData_Units.sql",
+  "BotData_Unique_Improvements.sql",
+  "BotData_Improvements.sql",
 
-  "BotData_Alias_Civilization.sql",
+  "BotData_Alias_Civilizations.sql",
   "BotData_Alias_Leaders.sql",
   "BotData_Alias.sql"
 ]

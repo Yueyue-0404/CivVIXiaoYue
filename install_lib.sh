@@ -1,10 +1,10 @@
 #!/bin/bash
 
 
-echo "Installing jieba..."
-pip3 install jieba -i https://mirrors.aliyun.com/pypi/simple/
+echo "Installing lxml..."
+pip3 install lxml -i https://mirrors.aliyun.com/pypi/simple/
 if [ $? -ne 0 ]; then
-    echo "Failed to install jieba, exiting."
+    echo "Failed to install lxml, exiting."
     exit 1
 fi
 

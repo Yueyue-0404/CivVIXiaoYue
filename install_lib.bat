@@ -1,9 +1,9 @@
 @echo off
 
-echo Installing jieba...
-pip install jieba -i https://mirrors.aliyun.com/pypi/simple/
+echo Installing lxml...
+pip install lxml -i https://mirrors.aliyun.com/pypi/simple/
 if %errorlevel% neq 0 (
-    echo Failed to install jieba, exiting.
+    echo Failed to install lxml, exiting.
     exit /b 1
 )
 
