@@ -1,5 +1,8 @@
+import re
 import sqlite3
-import yaml, json
+
+import json
+import yaml
 
 #  todo 该代码仅限调试时用，正式上线时只保留 上半 的内容
 if __name__ != '__main__':
@@ -88,7 +91,7 @@ class DataAccesser:
             params = (keyword,) + tuple(command_target_types)
             query_result = self.doSelectAndGetResult(use_db, sql, params)
             if not query_result:
-                return False
+                return False, None
             elif len(query_result) == 1:
                 return True, query_result[0]["Truename"]
             else:
@@ -118,7 +121,7 @@ class DataAccesser:
                 unique_unit_data = "文明{}没有UU。\n".format(keyword)
                 have_uu = False
             else:
-                unique_unit_data = "{}有{}个UU。以下是它们的信息：\n".format(keyword, len(query_result))
+                unique_unit_data = "{}有{}个UU。以下是它{}的信息：\n".format(keyword, len(query_result),"们" if len(query_result)>1 else "")
                 unique_unit_data += "=" * 20 + "\n"
                 for i in query_result:
                     unique_unit_data += self.formatUnitData(i)
@@ -133,9 +136,9 @@ class DataAccesser:
                     return unique_unit_data + "其所有领袖也都没有UU。"
             else:
                 if have_uu:
-                    unique_unit_data += "而且{}的领袖有{}个UU。以下是它们的信息：\n".format(keyword, len(query_result))
+                    unique_unit_data += "而且{}的领袖有{}个UU。以下是它{}的信息：\n".format(keyword, len(query_result),"们" if len(query_result)>1 else "")
                 else:
-                    unique_unit_data += "但是{}的领袖有{}个UU。以下是它们的信息：\n".format(keyword, len(query_result))
+                    unique_unit_data += "但是{}的领袖有{}个UU。以下是它{}}的信息：\n".format(keyword, len(query_result),"们" if len(query_result)>1 else "")
                 unique_unit_data += "=" * 20 + "\n"
                 for i in query_result:
                     unique_unit_data += "领袖：{}\n".format(i["Owner"])
@@ -149,15 +152,15 @@ class DataAccesser:
                 unique_unit_data = "领袖{}没有UU。\n".format(keyword)
                 have_uu = False
             else:
-                unique_unit_data = "{}有{}个UU。以下是它们的信息：\n".format(keyword, len(query_result))
+                unique_unit_data = "{}有{}个UU。以下是它{}的信息：\n".format(keyword, len(query_result),"们" if len(query_result)>1 else "")
                 unique_unit_data += "=" * 20 + "\n"
                 for i in query_result:
                     unique_unit_data += self.formatUnitData(i)
                     unique_unit_data += "=" * 20 + "\n"
                 have_uu = 1
-            sql = "select * from {} where Civilization in (select Civilization from BotData_CivilizationLeaders where Leader = ?) and Owner != ?".format(
+            sql = "select * from {} where Civilization in (select Civilization from BotData_CivilizationLeaders where Leader = ?) and Owner = Civilization".format(
                 table)
-            query_result = self.doSelectAndGetResult(use_db, sql, params * 2)
+            query_result = self.doSelectAndGetResult(use_db, sql, params)
             if not query_result:
                 if have_uu:
                     return unique_unit_data
@@ -165,9 +168,9 @@ class DataAccesser:
                     return unique_unit_data + "其所属国家也没有UU。"
             else:
                 if have_uu:
-                    unique_unit_data += "同时{}的所属国家有{}个UU。以下是它们的信息：\n".format(keyword, len(query_result))
+                    unique_unit_data += "同时{}的所属国家有{}个UU。以下是它{}的信息：\n".format(keyword, len(query_result),"们" if len(query_result)>1 else "")
                 else:
-                    unique_unit_data += "但是{}的所属国家有{}个UU。以下是它们的信息：\n".format(keyword, len(query_result))
+                    unique_unit_data += "但是{}的所属国家有{}个UU。以下是它{}}的信息：\n".format(keyword, len(query_result),"们" if len(query_result)>1 else "")
                 unique_unit_data += "=" * 20 + "\n"
                 for i in query_result:
                     unique_unit_data += "国家：{}\n".format(i["Civilization"])
@@ -176,75 +179,25 @@ class DataAccesser:
                 return unique_unit_data
         else:
             return "没能找到该领袖或文明。"
-        #
-        # sql = "select * from {} where Civilization = ? and Civilization=Owner".format(table)
-        # query_result = self.doSelectAndGetResult(use_db, sql, params)
-        # if not query_result:
-        #     pass
-        # else:
-        #     unique_unit_data = "{}有{}个UU。以下是它们的信息：\n".format(keyword,len(query_result))
-        # elif len(query_result) == 1:
-        #     if query_result[0]["Civilization"] == query_result[0]["Owner"]:
-        #         #  国家UU
-        #         unique_unit_data = self.formatUnitData(query_result[0])
-        #     else:
-        #         #  领袖UU
-        #         unique_unit_data = "{}没有UU，但它的领袖有1个UU。以下是它们的信息：\n".format(keyword)
-        #         unique_unit_data += self.formatUnitData(query_result[0])
-        #     return unique_unit_data
-        # else:
-        #     #  返回结果大于1说明这个国家还有麾下领袖有UU
-        #     if query_result[0]["Civilization"] == query_result[0]["Owner"]:
-        #         unique_unit_data = "{}的UU信息如下：".format(keyword)
-        #         unique_unit_data += self.formatUnitData(query_result[0])
-        #         unique_unit_data += "此外{}的领袖还有{}个UU。以下是它们的信息：\n".format(keyword,len(query_result)-1)
-        #         start = 0
-        #     else:
-        #         unique_unit_data = "{}没有UU，但它的领袖有{}个UU。以下是它们的信息：\n".format(keyword,len(query_result))
-        #         start = 1
-        #     for i in query_result[start:]:
-        #         unique_unit_data += self.formatUnitData(i)
-        #     return unique_unit_data
-        #
-        # # 国家没查到结果不会return，而是继续来到这里查领袖
-        # sql = "select * from {} where Owner = ?".format(table)
-        # query_result = self.doSelectAndGetResult(use_db, sql, params)
-        # if not query_result:
-        #     unique_unit_data = "没有查询到任何信息。"
-        #     return unique_unit_data
-        # else:
-        #     unique_unit_data = "{}有{}个UU。以下是它们的信息：\n".format(keyword, len(query_result))
-        #     if len(query_result) == 1:
-        #         unique_unit_data += self.formatUnitData(query_result[0])
-        #     else:
-        #         for i,v in enumerate(query_result):
-        #             if i != 0:
-        #                 unique_unit_data += "="*20
-        #             unique_unit_data += self.formatUnitData(v)
-        #     sub_sql = "select * from {} where Civilization = ? and Owner = ?".format(table)
-        #     sub_params = (query_result[0]["Civilization"],query_result[0]["Civilization"])
-        #     sub_query_result = self.doSelectAndGetResult(use_db, sub_sql, sub_params)
-        #     if not sub_query_result:
-        #         pass
-        #     elif len(sub_query_result)
 
     def formatUnitData(self, unit_data: dict):
-        unit_name = "名称：{}\n".format(unit_data["Unitname"])
-        basic_info = ""
+        unit_name = unit_data["Unitname"]+"\n\n"
+        description = re.sub("\s[[]ICON_.*[]]\s","",unit_data["Description"])
+        basic_info = "\n" + "=" * 6+"\n"
         for i in unit_info_dict["basic_info"]:
             if unit_data[i]:
                 if "{}" in unit_info_dict["basic_info"][i]:
                     basic_info += "{}\n".format(unit_info_dict["basic_info"][i].format(unit_data[i]))
                 else:
                     basic_info += "{}\n".format(unit_info_dict["basic_info"][i])
-        special_info = "特殊能力\n"
+        special_info = "=" * 6+"\n特殊能力\n"
         for i in unit_info_dict["special_info"]:
             if unit_data[i]:
                 if "{}" in unit_info_dict["special_info"][i]:
                     special_info += "{}\n".format(unit_info_dict["special_info"][i].format(unit_data[i]))
                 else:
                     special_info += "{}\n".format(unit_info_dict["special_info"][i])
-        return unit_name + basic_info + "=" * 6 + "\n" + special_info
+        return unit_name + description + basic_info + special_info
 
 
 #  todo 以下代码仅限调试时用，正式上线时删除

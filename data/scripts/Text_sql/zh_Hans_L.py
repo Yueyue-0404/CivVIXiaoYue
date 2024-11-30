@@ -4,9 +4,10 @@
         2. 生成一个数据迁移脚本
 """
 
-from lxml import etree
-from pathlib import Path
 import sqlite3
+from pathlib import Path
+
+from lxml import etree
 
 TEXT_DIR = Path("./data/text").resolve()
 print(TEXT_DIR)
@@ -82,6 +83,19 @@ def generateScript():
                 sql.write(insert_sql)
         finally:
             new_cursor.close()
+
+def loadIntpSimplizedDB():
+    if Path("./data/scripts/zh_Hans_Text.sql").exists():
+        sql = open(Path("./data/scripts/zh_Hans_Text.sql"), mode="r")
+        new_cursor = sqlite3.connect(Path("./data/civ6db/SimplizedData.sqlite").resolve()).cursor()
+        try:
+            new_cursor.executescript(sql.read())
+        finally:
+            sql.close()
+            new_cursor.close()
+            Path("./data/scripts/zh_Hans_Text.sql").unlink()
+    else:
+        raise FileNotFoundError
 
 
 operate(TEXT_DIR)

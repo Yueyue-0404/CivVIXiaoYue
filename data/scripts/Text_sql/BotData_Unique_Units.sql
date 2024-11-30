@@ -97,7 +97,7 @@ select
     ,SpreadCharges
     ,ReligiousHealCharges
     ,ExtractsArtifacts
-    ,unit.Description
+    ,t9."Text" as Description
     ,Flavor
     ,CanCapture
     ,CanRetreatWhenCaptured
@@ -236,5 +236,9 @@ left join
     zh_Hans_Text t8
 on
     t8."Tag" = pre2.Name
+left join
+    zh_Hans_Text t9
+on
+    t9."Tag" = unit.Description
 where
     trait."Type" is not null;

@@ -249,4 +249,7 @@ INSERT INTO BotData_Alias_Leaders (Tag,Truename,Alia,"Type") VALUES
 	 ('LOC_LEADER_BASIL_NAME','巴兹尔二世','男拜','领袖');
 INSERT INTO BotData_Alias_Leaders (Tag,Truename,Alia,"Type") VALUES
 	 ('LOC_LEADER_SEJONG_NAME','世宗大王','世宗','领袖'),
-	 ('LOC_LEADER_SEONDEOK_NAME','善德','女朝鲜','领袖');
+	 ('LOC_LEADER_SEONDEOK_NAME','善德','女朝鲜','领袖'),
+	 ('LOC_LEADER_YONGLE_NAME','永乐皇帝','judy','领袖');
+
+

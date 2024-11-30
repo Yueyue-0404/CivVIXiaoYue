@@ -48,4 +48,5 @@ echo "ordered-set installed successfully."
 
 
 echo All packages installed successfully!
+pause
 exit /b 0
