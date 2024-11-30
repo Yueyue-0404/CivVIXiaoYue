@@ -1,6 +1,5 @@
 from basic.bot_process import *
-from botpy import errors
-import datetime, traceback
+
 
 if __name__ == "__main__":
     client = CivVIBot()

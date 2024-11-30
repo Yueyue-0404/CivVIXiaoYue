@@ -1,0 +1,97 @@
+insert into BotData_Alias_Improvements (Tag,Truename,Alia,"Type") values
+	 ('LOC_IMPROVEMENT_BARBARIAN_CAMP_NAME','蛮族哨站','蛮族哨站','改良设施'),
+	 ('LOC_IMPROVEMENT_GOODY_HUT_NAME','部落村庄','部落村庄','改良设施'),
+	 ('LOC_IMPROVEMENT_FARM_NAME','农场','农场','改良设施'),
+	 ('LOC_IMPROVEMENT_MINE_NAME','矿山','矿山','改良设施'),
+	 ('LOC_IMPROVEMENT_QUARRY_NAME','采石场','采石场','改良设施'),
+	 ('LOC_IMPROVEMENT_FISHING_BOATS_NAME','渔船','渔船','改良设施'),
+	 ('LOC_IMPROVEMENT_PASTURE_NAME','牧场','牧场','改良设施'),
+	 ('LOC_IMPROVEMENT_PLANTATION_NAME','种植园','种植园','改良设施'),
+	 ('LOC_IMPROVEMENT_CAMP_NAME','营地','营地','改良设施'),
+	 ('LOC_IMPROVEMENT_LUMBER_MILL_NAME','伐木场','伐木场','改良设施');
+insert into BotData_Alias_Improvements (Tag,Truename,Alia,"Type") values
+	 ('LOC_IMPROVEMENT_OIL_WELL_NAME','油井','油井','改良设施'),
+	 ('LOC_IMPROVEMENT_OFFSHORE_OIL_RIG_NAME','海上石油钻机','海上石油钻机','改良设施'),
+	 ('LOC_IMPROVEMENT_BEACH_RESORT_NAME','海滨度假区','海滨度假区','改良设施'),
+	 ('LOC_IMPROVEMENT_FORT_NAME','堡垒','堡垒','改良设施'),
+	 ('LOC_IMPROVEMENT_AIRSTRIP_NAME','飞机跑道','飞机跑道','改良设施'),
+	 ('LOC_IMPROVEMENT_CHATEAU_NAME','城堡','城堡','改良设施'),
+	 ('LOC_IMPROVEMENT_COLOSSAL_HEAD_NAME','巨神头像','巨神头像','改良设施'),
+	 ('LOC_IMPROVEMENT_GREAT_WALL_NAME','长城','长城','改良设施'),
+	 ('LOC_IMPROVEMENT_KURGAN_NAME','坟墩','坟墩','改良设施'),
+	 ('LOC_IMPROVEMENT_MISSION_NAME','传教团','传教团','改良设施');
+insert into BotData_Alias_Improvements (Tag,Truename,Alia,"Type") values
+	 ('LOC_IMPROVEMENT_ROMAN_FORT_NAME','古罗马堡垒','古罗马堡垒','改良设施'),
+	 ('LOC_IMPROVEMENT_SPHINX_NAME','狮身人面像','狮身人面像','改良设施'),
+	 ('LOC_IMPROVEMENT_STEPWELL_NAME','梯井','梯井','改良设施'),
+	 ('LOC_IMPROVEMENT_ZIGGURAT_NAME','金字形神塔','金字形神塔','改良设施'),
+	 ('LOC_IMPROVEMENT_NAME','改良设施','改良设施','改良设施'),
+	 ('LOC_IMPROVEMENT_MISSILE_SILO','导弹发射井','导弹发射井','改良设施'),
+	 ('LOC_IMPROVEMENT_CHEMAMULL_NAME','马普切木人','马普切木人','改良设施'),
+	 ('LOC_IMPROVEMENT_MEKEWAP_NAME','棚屋','棚屋','改良设施'),
+	 ('LOC_IMPROVEMENT_GOLF_COURSE_NAME','高尔夫球场','高尔夫球场','改良设施'),
+	 ('LOC_IMPROVEMENT_POLDER_NAME','圩田','圩田','改良设施');
+insert into BotData_Alias_Improvements (Tag,Truename,Alia,"Type") values
+	 ('LOC_IMPROVEMENT_ICE_HOCKEY_RINK_NAME','冰球场','冰球场','改良设施'),
+	 ('LOC_IMPROVEMENT_TERRACE_FARM_NAME','梯田农场','梯田农场','改良设施'),
+	 ('LOC_IMPROVEMENT_MOUNTAIN_ROAD_NAME','印加路网','印加路网','改良设施'),
+	 ('LOC_IMPROVEMENT_MAORI_PA_NAME','帕堡','帕堡','改良设施'),
+	 ('LOC_IMPROVEMENT_OPEN_AIR_MUSEUM_NAME','生态博物馆','生态博物馆','改良设施'),
+	 ('LOC_IMPROVEMENT_FISHERY_NAME','渔场','渔场','改良设施'),
+	 ('LOC_IMPROVEMENT_CITY_PARK_NAME','市立公园','市立公园','改良设施'),
+	 ('LOC_IMPROVEMENT_GEOTHERMAL_PLANT_NAME','地热发电厂','地热发电厂','改良设施'),
+	 ('LOC_IMPROVEMENT_SOLAR_FARM_NAME','太阳能农场','太阳能农场','改良设施'),
+	 ('LOC_IMPROVEMENT_WIND_FARM_NAME','风力发电厂','风力发电厂','改良设施');
+insert into BotData_Alias_Improvements (Tag,Truename,Alia,"Type") values
+	 ('LOC_IMPROVEMENT_OFFSHORE_WIND_FARM_NAME','离岸风力发电厂','离岸风力发电厂','改良设施'),
+	 ('LOC_IMPROVEMENT_SEASTEAD_NAME','海洋家园','海洋家园','改良设施'),
+	 ('LOC_IMPROVEMENT_MOUND_NAME','卡霍基亚土墩','卡霍基亚土墩','改良设施'),
+	 ('LOC_IMPROVEMENT_NAZCA_LINE_NAME','纳斯卡巨画','纳斯卡巨画','改良设施'),
+	 ('LOC_IMPROVEMENT_MOAI_NAME','摩艾石像','摩艾石像','改良设施'),
+	 ('LOC_IMPROVEMENT_SKI_RESORT_NAME','滑雪场','滑雪场','改良设施'),
+	 ('LOC_IMPROVEMENT_MOUNTAIN_TUNNEL_NAME','穿山隧道','穿山隧道','改良设施'),
+	 ('LOC_IMPROVEMENT_ALCAZAR_NAME','阿卡萨城堡','阿卡萨城堡','改良设施'),
+	 ('LOC_IMPROVEMENT_MONASTERY_NAME','修道院','修道院','改良设施'),
+	 ('LOC_IMPROVEMENT_VAMPIRE_CASTLE_NAME','吸血鬼城堡','吸血鬼城堡','改良设施');
+insert into BotData_Alias_Improvements (Tag,Truename,Alia,"Type") values
+	 ('LOC_IMPROVEMENT_ROCK_HEWN_CHURCH_NAME','独石教堂','独石教堂','改良设施'),
+	 ('LOC_IMPROVEMENT_HACIENDA_NAME','大庄园','大庄园','改良设施'),
+	 ('LOC_IMPROVEMENT_BATEY_NAME','巴特依','巴特依','改良设施'),
+	 ('LOC_IMPROVEMENT_METEOR_GOODY_NAME','流星坑','流星坑','改良设施'),
+	 ('LOC_IMPROVEMENT_KAMPUNG_NAME','甘榜屋','甘榜屋','改良设施'),
+	 ('LOC_IMPROVEMENT_MAHAVIHARA_NAME','大寺','大寺','改良设施'),
+	 ('LOC_IMPROVEMENT_TRADING_DOME_NAME','圆顶市集','圆顶市集','改良设施'),
+	 ('LOC_IMPROVEMENT_PYRAMID_NAME','努比亚金字塔','努比亚金字塔','改良设施'),
+	 ('LOC_IMPROVEMENT_PAIRIDAEZA_NAME','波斯庭院','波斯庭院','改良设施'),
+	 ('LOC_IMPROVEMENT_INDUSTRY_NAME','行业','行业','改良设施');
+insert into BotData_Alias_Improvements (Tag,Truename,Alia,"Type") values
+	 ('LOC_IMPROVEMENT_INDUSTRY_TYPE_NAME','{1_Resource}行业','{1_Resource}行业','改良设施'),
+	 ('LOC_IMPROVEMENT_CORPORATION_NAME','公司','公司','改良设施'),
+	 ('LOC_IMPROVEMENT_CORPORATION_TYPE_NAME','{1_Resource}公司','{1_Resource}公司','改良设施'),
+	 ('LOC_IMPROVEMENT_OUTBACK_STATION_NAME','内陆牧场','内陆牧场','改良设施'),
+	 ('LOC_IMPROVEMENT_ANCIENT_TOWER_DEFENSE_NAME','路障','路障','改良设施'),
+	 ('LOC_IMPROVEMENT_MODERN_TOWER_DEFENSE_NAME','强化路障','强化路障','改良设施'),
+	 ('LOC_IMPROVEMENT_ANCIENT_TRAP_DEFENSE_NAME','陷阱','陷阱','改良设施'),
+	 ('LOC_IMPROVEMENT_MODERN_TRAP_DEFENSE_NAME','现代陷阱','现代陷阱','改良设施'),
+	 ('LOC_IMPROVEMENT_ANCIENT_TOWER_DEFENSE_DESC','游戏早期的改良设施，公民无法在此工作，对经过其上方或相邻单元格的敌方单位造成少量伤害，并形成控制区。随“军事工程学”科技解锁，使用1点建造者次数进行建造。无法阻止单位移动通过此空间。','游戏早期的改良设施，公民无法在此工作，对经过其上方或相邻单元格的敌方单位造成少量伤害，并形成控制区。随“军事工程学”科技解锁，使用1点建造者次数进行建造。无法阻止单位移动通过此空间。','改良设施'),
+	 ('LOC_IMPROVEMENT_MODERN_TOWER_DEFENSE_DESC','游戏后期的改良设施，公民无法在此工作，对经过其上方或相邻单元格的敌方单位造成中等伤害，并形成控制区。随“膛线”科技解锁，使用1点军事工程师次数进行建造。无法阻止单位移动通过此空间。','游戏后期的改良设施，公民无法在此工作，对经过其上方或相邻单元格的敌方单位造成中等伤害，并形成控制区。随“膛线”科技解锁，使用1点军事工程师次数进行建造。无法阻止单位移动通过此空间。','改良设施');
+insert into BotData_Alias_Improvements (Tag,Truename,Alia,"Type") values
+	 ('LOC_IMPROVEMENT_ANCIENT_TRAP_DEFENSE_DESC','游戏早期的改良设施，公民无法在此工作，对直接经过其上方的敌方单位造成中等伤害，并耗尽其移动力。随“建设”科技解锁，使用1点建造者次数进行建造。无法阻止单位移动通过此空间。','游戏早期的改良设施，公民无法在此工作，对直接经过其上方的敌方单位造成中等伤害，并耗尽其移动力。随“建设”科技解锁，使用1点建造者次数进行建造。无法阻止单位移动通过此空间。','改良设施'),
+	 ('LOC_IMPROVEMENT_MODERN_TRAP_DEFENSE_DESC','游戏后期的改良设施，公民无法在此工作，对直接经过其上方的敌方单位造成大量伤害，并耗尽其移动力。随“弹道学”科技解锁，使用1点军事工程师次数进行建造。无法阻止单位移动通过此空间。','游戏后期的改良设施，公民无法在此工作，对直接经过其上方的敌方单位造成大量伤害，并耗尽其移动力。随“弹道学”科技解锁，使用1点军事工程师次数进行建造。无法阻止单位移动通过此空间。','改良设施'),
+	 ('LOC_IMPROVEMENT_ALCAZAR_DESCRIPTION_ZOMBIE','{LOC_IMPROVEMENT_ALCAZAR_DESCRIPTION}[NEWLINE][NEWLINE]{LOC_DESCRIPTION_ADDENDUM_TRAP}','{LOC_IMPROVEMENT_ALCAZAR_DESCRIPTION}[NEWLINE][NEWLINE]{LOC_DESCRIPTION_ADDENDUM_TRAP}','改良设施'),
+	 ('LOC_IMPROVEMENT_MAORI_PA_DESCRIPTION_ZOMBIE','{LOC_IMPROVEMENT_MAORI_PA_DESCRIPTION}[NEWLINE][NEWLINE]{LOC_DESCRIPTION_ADDENDUM_WEAK_TRAP}','{LOC_IMPROVEMENT_MAORI_PA_DESCRIPTION}[NEWLINE][NEWLINE]{LOC_DESCRIPTION_ADDENDUM_WEAK_TRAP}','改良设施'),
+	 ('LOC_IMPROVEMENT_ROMAN_FORT_DESCRIPTION_ZOMBIE','{LOC_IMPROVEMENT_ROMAN_FORT_DESCRIPTION}[NEWLINE][NEWLINE]{LOC_DESCRIPTION_ADDENDUM_WEAK_TRAP}','{LOC_IMPROVEMENT_ROMAN_FORT_DESCRIPTION}[NEWLINE][NEWLINE]{LOC_DESCRIPTION_ADDENDUM_WEAK_TRAP}','改良设施'),
+	 ('LOC_IMPROVEMENT_FORT_DESCRIPTION_ZOMBIE','{LOC_IMPROVEMENT_FORT_DESCRIPTION}[NEWLINE][NEWLINE]{LOC_DESCRIPTION_ADDENDUM_WEAK_TRAP}','{LOC_IMPROVEMENT_FORT_DESCRIPTION}[NEWLINE][NEWLINE]{LOC_DESCRIPTION_ADDENDUM_WEAK_TRAP}','改良设施'),
+	 ('LOC_IMPROVEMENT_VAMPIRE_CASTLE_DESCRIPTION_ZOMBIE','{LOC_IMPROVEMENT_VAMPIRE_CASTLE_DESCRIPTION}[NEWLINE][NEWLINE]{LOC_DESCRIPTION_ADDENDUM_WEAK_TRAP}','{LOC_IMPROVEMENT_VAMPIRE_CASTLE_DESCRIPTION}[NEWLINE][NEWLINE]{LOC_DESCRIPTION_ADDENDUM_WEAK_TRAP}','改良设施'),
+	 ('LOC_IMPROVEMENT_GREAT_WALL_DESCRIPTION_ZOMBIE','{LOC_IMPROVEMENT_GREAT_WALL_DESCRIPTION}[NEWLINE][NEWLINE]{LOC_DESCRIPTION_ADDENDUM_BARRICADE}','{LOC_IMPROVEMENT_GREAT_WALL_DESCRIPTION}[NEWLINE][NEWLINE]{LOC_DESCRIPTION_ADDENDUM_BARRICADE}','改良设施'),
+	 ('LOC_IMPROVEMENT_FEITORIA_NAME','商站','商站','改良设施'),
+	 ('LOC_IMPROVEMENT_GOODY_HUT_NAME','部落村庄','蘑菇','改良设施');
+insert into BotData_Alias_Improvements (Tag,Truename,Alia,"Type") values
+	 ('LOC_IMPROVEMENT_FARM_NAME','农场','农田','改良设施'),
+	 ('LOC_IMPROVEMENT_FARM_NAME','农场','田','改良设施'),
+	 ('LOC_IMPROVEMENT_MINE_NAME','矿山','矿场','改良设施'),
+	 ('LOC_IMPROVEMENT_KURGAN_NAME','坟墩','坟堆','改良设施'),
+	 ('LOC_IMPROVEMENT_TERRACE_FARM_NAME','梯田农场','梯田','改良设施'),
+	 ('LOC_IMPROVEMENT_SOLAR_FARM_NAME','太阳能农场','太阳能田','改良设施'),
+	 ('LOC_IMPROVEMENT_OFFSHORE_WIND_FARM_NAME','离岸风力发电厂','海上风力发电厂','改良设施'),
+	 ('LOC_IMPROVEMENT_MOUND_NAME','卡霍基亚土墩','土墩','改良设施');

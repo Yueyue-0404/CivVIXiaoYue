@@ -76,27 +76,32 @@ class DataAccesser:
     def findName(self, keyword, command_target_types: list or tuple):
         use_db = self.simplizedDB
         # 先检查是不是真实存在的名字
-        sql = "select Truename from BotData_Alias where Truename = ? and type in ("
-        for i, _ in enumerate(command_target_types):
-            if i == 0:
-                sql += "?"
-            else:
-                sql += ",?"
-        sql += ") limit 1;"
-        params = (keyword,) + tuple(command_target_types)
-        query_result = self.doSelectAndGetResult(use_db, sql, params)
-        if query_result:
-            return True, keyword
-        else:
-            # 不存在则查别名
-            sql = "select Truename from BotData_Alias where Alia = ? and type in ("
+        params = (keyword,) + (tuple(command_target_types) if command_target_types else tuple())
+        if command_target_types:
+            sql = "select Truename from BotData_Alias where Truename = ? and type in ("
             for i, _ in enumerate(command_target_types):
                 if i == 0:
                     sql += "?"
                 else:
                     sql += ",?"
-            sql += ");"
-            params = (keyword,) + tuple(command_target_types)
+            sql += ") limit 1;"
+        else:
+            sql = "select Truename from BotData_Alias where Truename = ? limit 1;"
+        query_result = self.doSelectAndGetResult(use_db, sql, params)
+        if query_result:
+            return True, keyword
+        else:
+            # 不存在则查别名
+            if command_target_types:
+                sql = "select Truename from BotData_Alias where Alia = ? and type in ("
+                for i, _ in enumerate(command_target_types):
+                    if i == 0:
+                        sql += "?"
+                    else:
+                        sql += ",?"
+                sql += ");"
+            else:
+                sql = "select Truename from BotData_Alias where Alia = ?;"
             query_result = self.doSelectAndGetResult(use_db, sql, params)
             if not query_result:
                 return False, None
@@ -675,18 +680,26 @@ class DataAccesser:
                 extra_content_list.append(extra_content)
 
             # 4. 在BotData_Building_CitizenYieldChanges中查询专家增强效果
-            new_cursor = self.simplizedDB.cursor()
-            new_cursor.execute(
-                "select YieldType,YieldChange from BotData_Building_CitizenYieldChanges where BuildingType = ?",
-                (building_name,))
+            new_cursor.execute("select YieldType,YieldChange from BotData_Building_CitizenYieldChanges where BuildingType = ?",(building_name,))
             res = new_cursor.fetchall()
             if res:
                 extra_content = "该建筑能使基底区域的专家产出获得以下额外提升："
                 for i, row in enumerate(res):
-                    extra_content += "\n"+" "*4+"{}. {}+{}".format(i+1,row["YieldType"],row["YieldChange"])
+                    extra_content += "\n"+" "*4+"{}. {}+{}".format(i+1,row["YieldType"], row["YieldChange"])
                 extra_content_list.append(extra_content)
 
-            # 5. 在BotData_BuildingPrereqs中查询前置建筑
+            # 5. 在BotData_Building_GreatWorkSlot中查询巨作的槽位
+            new_cursor.execute("select GreatWorkSlotType,NumSlots from BotData_Building_GreatWorkSlot where BuildingName = ?",(building_name,))
+            res = new_cursor.fetchall()
+            if res:
+                if len(res) == 1:
+                    extra_content = "该建筑能提供巨作槽位："
+                else:
+                    extra_content = "该建筑提供多种巨作槽位，玩家可以自选填充："
+                for i, row in enumerate(res):
+                    extra_content += "\n"+" "*4+"{}. {} {}槽位".format(i+1,row["NumSlots"], row["GreatWorkSlotType"])
+                extra_content_list.append(extra_content)
+            # 6. 在BotData_BuildingPrereqs中查询前置建筑
             new_cursor.execute("select PrereqBuilding from BotData_BuildingPrereqs where Building = ?",(building_name,))
             res = new_cursor.fetchall()
             if res:
@@ -701,41 +714,6 @@ class DataAccesser:
             new_cursor.close()
             return "\n===\n".join(extra_content_list)
 
-    # def doBuildingCitizenYieldChangesQuery(self, building_name):
-    #     """
-    #         查询专家产出
-    #     """
-    #     new_cursor = self.simplizedDB.cursor()
-    #     # 这是建筑额外产出
-    #     new_cursor.execute("select YieldType,YieldChange from BotData_Building_CitizenYieldChanges where BuildingType = ?",(building_name,))
-    #     res1 = new_cursor.fetchall()
-    #     # 这是区域基础产出
-    #     new_cursor.execute("select PrereqDistrict from BotData_Buildings where Name = ?",(building_name,))
-    #     belonged_district_name = new_cursor.fetchone().get("PrereqDistrict")
-    #     new_cursor.execute("select YieldName,YieldChange from BotData_District_CitizenYieldChanges where DistrictName = ?",(belonged_district_name,))
-    #     res2 = new_cursor.fetchall()
-    #
-    #     citizen_yield_dict = {}
-    #     for i in res1:
-    #         if i["YieldType"] in citizen_yield_dict:
-    #             citizen_yield_dict[i["YieldType"]] += i["YieldChange"]
-    #         else:
-    #             citizen_yield_dict[i["YieldType"]] = i["YieldChange"]
-    #     for i in res2:
-    #         if i["YieldName"] in citizen_yield_dict:
-    #             citizen_yield_dict[i["YieldName"]] += i["YieldChange"]
-    #         else:
-    #             citizen_yield_dict[i["YieldName"]] = i["YieldChange"]
-    #
-    #     if citizen_yield_dict:
-    #         extra_content = "专家产出："
-    #         count = 1
-    #         for i, v in citizen_yield_dict.items():
-    #             extra_content += "\n" + " " * 4 + "{}. {}+{}".format(count, i, v)
-    #             count += 1
-    #     else:
-    #         extra_content = "专家不提供任何产出"
-    #     return extra_content
 
     def selectAB(self, keyword, command_index=None):
         use_db = self.simplizedDB if command_index else self.GamePlayDB
@@ -762,6 +740,15 @@ class DataAccesser:
                 return ability_content
             else:
                 return "{}没有特殊能力".format(keyword)
+
+    def findCategory(self,keyword):
+        result = self.doSelectAndGetResult(
+            self.simplizedDB,
+            "select Type from BotData_Alias where Truename = ?;",
+            (keyword,)
+        )
+        category = result[0].get("Type")
+        return category
 
 
 

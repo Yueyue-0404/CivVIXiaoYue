@@ -47,6 +47,13 @@ def write_into_json(json_path: Path, data: dict or list):
     with open(json_path, mode="w",encoding="utf8") as f:
         json.dump(data, f, ensure_ascii=False, indent=4,)
 
+
 json_dir = Path("../..").resolve()
+print("Start!")
+print("Writing alias_dict.json...")
 write_into_json(json_dir.joinpath("alias_dict.json"),alias_dict)
+print("Accomplished")
+print("Writing alias_pinyin_dict.json")
 write_into_json(json_dir.joinpath("alias_pinyin_dict.json"),alias_pinyin_dict)
+print("Accomplished")
+print("Done!")

@@ -24,9 +24,20 @@
   "BotData_Building_YieldChanges.sql",
   "BotData_Building_YieldChangesBonusWithPower.sql",
   "BotData_Building_YieldDistrictCopies.sql",
+  "BotData_Building_GreatWorkSlot.sql",
   "BotData_CivilizationsAndLeaders_Traits.sql",
+  "BotData_ArtificialWonders.sql",
+  "BotData_NatureWonders.sql",
+  "BotData_Feature_ValidTerrains.sql",
 
+  "BotData_Alias_ArtificialWonders.sql",
+  "BotData_Alias_Buildings.sql",
+  "BotData_Alias_Civics_and_Technologies.sql",
   "BotData_Alias_Civilizations.sql",
+  "BotData_Alias_Districts.sql",
+  "BotData_Alias_Improvements.sql",
   "BotData_Alias_Leaders.sql",
+  "BotData_Alias_NatureWonders.sql",
+  "BotData_Alias_Units.sql",
   "BotData_Alias.sql"
 ]

@@ -24,6 +24,7 @@ with open(DATA_DIR.joinpath("alias_pinyin_dict.json"), mode="r", encoding="utf8"
 class Controller:
     def __init__(self):
         self.accesser = DataAccesser()
+        self.default_db = self.accesser.simplizedDB
 
     def parseMSG(self, content: str):
         """
@@ -52,10 +53,10 @@ class Controller:
         if command[0] != "/":
             return 100, " ".join(content_split_with_space)
         if command in command_dict:
-            if len(content_split_with_space) > 1:
+            if len(content_split_with_space) > 1 or command == "/help":
                 return command_dict[command], " ".join(content_split_with_space[1:])
             else:
-                return command_dict["/help"], ""
+                return 999, "您使用了一个合法指令，但没有查询任何关键词"
         else:
             # 如果没有这个指令
             return 0, ""
@@ -100,23 +101,30 @@ class Controller:
             return list(set(possible_keywords)), similarity
         # 这是纠正错别字的函数
 
-    def assignQueryMission(self, command_index, keyword) -> str:
+    def assignQueryMission(self, command_index, keyword) -> tuple[str, dict]:
         """
             这个函数应当是bot_process获取查询结果的唯一入口，且应该传入parseMSG返回的结果
-            然后根据指令和关键字分配查询任务
+            然后根据指令和关键字分配查询任务并返回结果
         """
+        context = {"type": 0}
         content = ""
         if command_index == command_dict["/help"]:
             content += "这是帮助"
+            context["type"] = 1
+            context["file_url"] = "https://116-142-255-144.pd1.cjjd19.com:30443/download-cdn.cjjd19.com/123-211/f7898dd3/1835068500-0/f7898dd32602989547b8b5fc501d24d3/c-m44?v=5&t=1726301644&s=17263016446cdc04893106431779ebac2e6ff245df&r=ML21HZ&bzc=1&bzs=1835068500&filename=CivVIBot_help.png&cache_type=1&xmfcid=7e4250c8-93d8-45d3-b640-00d51c7463e5-0-cd8a62355"
+        elif command_index == command_dict["not_exists"]:
+            content += "不存在这个指令，您可以@小钥后输入/help来获取帮助"
+        elif command_index == command_dict["blank_keyword"]:
+            content += keyword
         else:
             keywords_selected = self.checkInNameTable(keyword, command_index)
             if keywords_selected != keyword:
-                res, keyword,content_plus = self.ifIsAlia(keyword,keywords_selected)
+                res, keyword, content_plus = self.ifIsAlia(keyword,keywords_selected)
             else:
                 res, content_plus = 1, ""
             if res == 2:
                 content += content_plus
-                return content
+                return content, context
             elif res == 1:
                 content += content_plus
             else:  # elif res == 0
@@ -125,7 +133,7 @@ class Controller:
                 res, keyword, content_plus = self.ifIsWrongTyped(keyword,possible_keywords)
                 if res == 2:
                     content += content_plus
-                    return content
+                    return content, context
                 elif res == 1:
                     content += content_plus
                     keywords_selected = self.checkInNameTable(keyword, command_index)
@@ -135,18 +143,18 @@ class Controller:
                         res, content_plus = 1, ""
                     if res == 2:
                         content += content_plus
-                        return content
+                        return content, context
                     elif res == 1:
                         content += content_plus
                     else:  # res不可能是0，因为元数据都是存在的
                         content = "错误，错别字候选词中存在该候选词，但别名表中不存在此关键词，发生该错误请联系开发者。"
-                        return content
+                        return content, context
                 else:
-                    return content
+                    return content, context
 
             if command_index == 100:
                 content += "这是个普通指令，直接查询关键字{}\n".format(keyword)
-                content += "结果为：{}".format(self.accesser.selectUU(keyword, command_index))
+                content += "结果为：{}".format(self.selectKeyword(keyword,))
             elif command_index == command_dict["/uu"]:
                 content += "这是uu指令，应该查询国家或领袖{}\n".format(keyword)
                 content += "结果为：{}".format(self.accesser.selectUU(keyword, command_index))
@@ -167,8 +175,8 @@ class Controller:
                 content += "这是ability指令，应该查询国家或领袖{}\n".format(keyword)
                 content += "结果为：{}".format(self.accesser.selectAB(keyword, command_index))
                 # 这是ab指令
-            elif command_index == command_dict["/bug"]:
-                content += "这是bug指令{}".format(keyword)
+            elif command_index == command_dict["/testmd"]:
+                content += "测试MD消息效果{}".format(keyword)
                 content += "结果为：{}".format(self.accesser.selectUU(keyword))
                 # 这是bug指令
             elif command_index == 0:
@@ -176,7 +184,7 @@ class Controller:
                 # 这是错误指令，这个指令并不存在，这个指令会返回一个帮助图片
             else:
                 content += "未知错误，多次出现请联系作者。"
-            return content
+        return content, context
 
     def checkInNameTable(self, keyword, command_index):
         exists, keyword_selected = self.accesser.findName(keyword, command_target_types[command_index])
@@ -246,3 +254,79 @@ class Controller:
         content = re.sub("union\s*all\s*select", "union_all_select", content, flags=re.IGNORECASE)
 
         return content
+
+    def selectKeyword(self,keyword):
+        category = self.accesser.findCategory(keyword)
+        content = ""
+        if category == "人造奇观":
+            content += self.artificialwonder_query(keyword)
+        elif category == "建筑":
+            content += self.building_query(keyword)
+        elif category == "市政":
+            content += self.civic_query(keyword)
+        elif category == "文明":
+            content += self.civilization_query(keyword)
+        elif category == "改良设施":
+            content += self.improvement_query(keyword)
+        elif category == "领袖":
+            content += self.leader_query(keyword)
+        elif category == "自然奇观":
+            content += self.naturewonder_query(keyword)
+        elif category == "科技":
+            content += self.technology_query(keyword)
+        elif category == "单位":
+            content += self.unit_query(keyword)
+        else:
+            content += "小钥未收录该类型的条目。"
+        return content
+
+    def artificialwonder_query(self, keyword):
+        res = self.accesser.doSelectAndGetResult(
+            self.default_db,
+            "select Description,Prereq,Cost,Quote from BotData_ArtificialWonders where Name = ?",
+            (keyword,)
+        )[0]
+        content = "官方描述：\n"
+        content += self.eliminate_bracket_markers(res.get("Description"))
+        content += "\n" + "=" * 12 + "\n"
+        content += "生产力需求：{}锤\n前置{}".format(
+            res.get("Cost"),res.get("Prereq")
+        )
+        content += "\n" + "=" * 12 + "\n"
+        content += self.format_quote(res.get("Quote"))
+        return content
+
+    def naturewonder_query(self, keyword):
+        res = self.accesser.doSelectAndGetResult(
+            self.default_db,
+            "select Description,Quote from BotData_NatureWonders where Name = ?",
+            (keyword,)
+        )[0]
+        content = "官方描述：\n"
+        content += self.eliminate_bracket_markers(res.get("Description"))
+        content += "\n" + "=" * 12 + "\n"
+        valid_terrains = self.accesser.doSelectAndGetResult(
+            self.default_db,
+            "select Terrain from BotData_Feature_ValidTerrains where Feature = ?",
+            (keyword,)
+        )
+        if valid_terrains:
+            content += "只能出现在以下地形上："
+            for i,v in enumerate(valid_terrains):
+                content += "\n{}. {}".format(i+1,v.get("Terrain"))
+            content += "\n" + "=" * 12 + "\n"
+        content += self.format_quote(res.get("Quote"))
+        return content
+
+
+    def eliminate_bracket_markers(self,string:str) -> str:
+        string = re.sub("\s*\[ICON_.+?]\s*", "", string)
+        string = re.sub("\s*\[NEWLINE]\s*(\[NEWLINE])*\s*", "\n", string)
+        return string
+
+    def format_quote(self, quote_string:str) -> str:
+        quote_string = quote_string.replace("“", "")
+        quote_string = quote_string.replace("”", "")
+        quote_string = "『" + quote_string
+        quote_string = re.sub("\s*\[NEWLINE]\s*(\[NEWLINE])*\s*", "』\n", quote_string)
+        return quote_string

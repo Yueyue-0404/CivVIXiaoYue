@@ -2,50 +2,27 @@ import json
 from pathlib import Path
 
 data = {
-    "basic_info": {
-        "Prereq": "{} 解锁",
-        "Cost": "基础花费{}锤",
-        "PrereqDistrict": "基底区域：{}",
-        "Housing": "提供{}住房",
-        "Entertainment": "提供{}宜居度",
-        "PurchaseYield": "可以用{}直接购买",
-        "Maintenance": "维护费{}金/回合",
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'stream': 'ext://sys.stdout',
+        },
+        'file': {
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': "./log/XiaoYueLog.log",
+            'when': 'midnight',  # 每天午夜轮换
+            'interval': 1,      # 间隔一天
+            'backupCount': 30  # 保留一个月
+        },
     },
-    "special_info": {
-        "OuterDefenseHitPoints": "+{} 城墙护甲",
-        "OuterDefenseStrength": "该建筑能令城市的防御力提高{}点",
-        "EnabledByReligion": "必须有对应的宗教教条才能建造",
-        "CitizenSlots": "提供{}专家槽位",
-        "UnlocksGovernmentPolicy": "建成后能解锁一张对应政体级别的传承紫卡",
-        "GovernmentTierRequirement": "必须拥有{}政体才能解锁",
-    },
-    "no_use": {
-        "MaxPlayerInstances": "玩家只能拥有一个，只有宫殿有这个字段，没啥用",
-        "MaxWorldInstances": "全球只能有一个，都是奇观，没啥用",
-        "Capital": "应该是用来标记首都的，只有宫殿有这个字段，没啥用",
-        "AdjacentDistrict": "奇观用的，没啥用",
-        "RequiresPlacement": "奇观用的，没啥用",
-        "RequiresRiver": "奇观用的，没啥用",
-        "AdjacentResource": "奇观用的，没啥用",
-        "Coast": "奇观用的，没啥用",
-        "AllowsHolyCity": "奇观用的，没啥用",
-        "MustPurchase": "完全没用，感觉是抄的单位表也没删",
-        "IsWonder": "用于标识是否是奇观，这个ETL时候有用，现在没用了",
-        "TraitType": "用于标识是否是UD，这个ETL时候有用，现在没用了",
-        "MustBeLake": "奇观用的，没啥用",
-        "MustNotBeLake": "奇观用的，没啥用",
-        "RegionalRange": "辐射范围，奇观用的，没啥用",
-        "AdjacentToMountain": "必须靠山，奇观用的，没啥用",
-        "RequiresReligion": "要有宗教，奇观用的，没啥用",
-        "GrantFortification": "没懂",
-        "DefenseModifier": "没懂",
-        "InternalOnly": "只能建造在国境外，只有火箭有，应该就是用来阻止玩家建造的",
-        "RequiresAdjacentRiver": "奇观用的，没啥用",
-        "Quote": "这是奇观介绍",
-        "QuoteAudio": "这是奇观介绍语音",
-        "AdjacentCapital": "必须靠首都，阿帕专属",
-        "AdjacentImprovement": "必须靠某种改良",
-        "CityAdjacentTerrain": ""
+    'loggers': {
+        '': {  # root logger
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
     },
 }
 
@@ -56,4 +33,4 @@ def write_into_json(json_path: Path, data: dict or list):
         json.dump(data, f, ensure_ascii=False, indent=4)
 
 
-write_into_json(Path.cwd().joinpath("buildingdata.json"), data)
+write_into_json(Path.cwd().joinpath("log_config.json"), data)

@@ -4,13 +4,29 @@
 import yaml
 
 command_dict = {
-    # 6:"bug",
-    # 5:"ab",
-    # 4:"ub",
-    # 2:"ud",
-    # 3:"ui",
-    1: ["领袖","文明"]
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'stream': 'ext://sys.stdout',
+        },
+        'file': {
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': "./log/XiaoYueLog.log",
+            'when': 'midnight',  # 每天午夜轮换
+            'interval': 1,      # 间隔一天
+            'backupCount': 30  # 保留一个月
+        },
+    },
+    'loggers': {
+        '': {  # root logger
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
 }
 
-with open('command_target_types.yaml', 'w') as f:
+with open('log_config.yaml', 'w') as f:
     yaml.dump(command_dict, f)

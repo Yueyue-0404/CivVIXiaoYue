@@ -72,7 +72,6 @@ def operate(file: Path):
         new_cursor.close()
 
 
-
 def generateScript():
     with open(Path("./zh_Hans_Text.sql"), mode="w",encoding="utf-8") as sql:
         sql.write("drop table if exists zh_Hans_Text;\n")
@@ -91,28 +90,31 @@ def generateScript():
         finally:
             new_cursor.close()
 
-def loadIntpSimplizedDB():
+
+def loadIntoSimplizedDB():
     if Path("./zh_Hans_Text.sql").exists():
         new_cursor = sqlite3.connect(Path("../../civ6db/SimplizedData.sqlite").resolve()).cursor()
         try:
-            with open(Path("./zh_Hans_Text.sql"), mode="r", encoding="utf-8") as sql_file:
-                sql = sql_file.read()
-                new_cursor.executescript(sql)
-        finally:
-            new_cursor.close()
+            try:
+                with open(Path("./zh_Hans_Text.sql"), mode="r", encoding="utf-8") as sql_file:
+                    sql = sql_file.read()
+                    new_cursor.executescript(sql)
+            finally:
+                new_cursor.close()
 
-        new_cursor = sqlite3.connect(Path("../../civ6db/DebugGameplay.sqlite").resolve()).cursor()
-        try:
-            with open(Path("./zh_Hans_Text.sql"), mode="r", encoding="utf-8") as sql_file:
-                sql = sql_file.read()
-                new_cursor.executescript(sql)
+            new_cursor = sqlite3.connect(Path("../../civ6db/DebugGameplay.sqlite").resolve()).cursor()
+            try:
+                with open(Path("./zh_Hans_Text.sql"), mode="r", encoding="utf-8") as sql_file:
+                    sql = sql_file.read()
+                    new_cursor.executescript(sql)
+            finally:
+                new_cursor.close()
         finally:
-            new_cursor.close()
+            Path("./zh_Hans_Text.sql").unlink()
     else:
         raise FileNotFoundError
-    Path("./zh_Hans_Text.sql").unlink()
 
 
 operate(TEXT_DIR)
 generateScript()
-loadIntpSimplizedDB()
+loadIntoSimplizedDB()

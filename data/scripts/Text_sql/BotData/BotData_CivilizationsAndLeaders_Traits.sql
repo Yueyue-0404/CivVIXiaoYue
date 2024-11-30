@@ -38,8 +38,12 @@ on
 where 
     t1."Text" is not null
     and t3."Text" is not null
-union all 
-select 
+    and lt.TraitType not like 'TRAIT_LEADER_UNIT%'
+    and lt.TraitType not like 'TRAIT_LEADER_BUILDING%'
+    and lt.TraitType not like 'TRAIT_LEADER_DISTRICT%'
+    and lt.TraitType not like 'TRAIT_LEADER_IMPROVEMENT%'
+union all
+select
     "文明" as "Type"
     ,t1."Text" as OwnerName
     ,t2."Text" as TraitName
@@ -49,23 +53,27 @@ from
 left join
     Civilizations c
 on
-    ct.CivilizationType = c.CivilizationType 
-left join   
-    Traits t 
+    ct.CivilizationType = c.CivilizationType
+left join
+    Traits t
 on
-    ct.TraitType = t.TraitType 
-left join 
+    ct.TraitType = t.TraitType
+left join
     zh_Hans_Text t1
 on
-    c.Name = t1."Tag" 
-left join 
+    c.Name = t1."Tag"
+left join
     zh_Hans_Text t2
 on
-    t.Name  = t2.Tag 
-left join 
+    t.Name  = t2.Tag
+left join
     zh_Hans_Text t3
 on
     t.Description  = t3.Tag
-where 
+where
     t1."Text" is not null
     and t3."Text" is not null
+    and ct.TraitType not like 'TRAIT_CIVILIZATION_UNIT%'
+    and ct.TraitType not like 'TRAIT_CIVILIZATION_BUILDING%'
+    and ct.TraitType not like 'TRAIT_CIVILIZATION_DISTRICT%'
+    and ct.TraitType not like 'TRAIT_CIVILIZATION_IMPROVEMENT%'

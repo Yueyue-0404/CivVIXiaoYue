@@ -1,0 +1,36 @@
+{
+  "InlineKeyboard": {
+    "rows": [
+      {
+        "InlineKeyboardRow": {
+          "buttons": [
+            {
+              "id": "12",
+              "render_data": {
+                "label": "这是个按钮",
+                "visited_label": "这是个点击过的按钮",
+                "style": 1
+              },
+              "action": {
+                "type": 1,
+                "data": "111"
+              }
+            },
+            {
+              "id": "123",
+              "render_data": {
+                "label": "这是第二个按钮",
+                "visited_label": "这是第二个点击过的按钮",
+                "style": 1
+              },
+              "action": {
+                "type": 1,
+                "data": "111"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
